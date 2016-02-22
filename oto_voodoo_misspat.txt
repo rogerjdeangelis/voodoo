@@ -1,0 +1,124 @@
+*   *  *****   ***    ***          ****     *    *****
+** **    *    *   *  *   *         *   *   * *     *
+* * *    *     *      *            *   *  *   *    *
+*   *    *      *      *           ****   *****    *
+*   *    *       *      *          *      *   *    *
+*   *    *    *   *  *   *         *      *   *    *
+*   *  *****   ***    ***          *      *   *    *
+
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Variable Name Aliases for zipcode for Use in Mising Value Pattern Analysis
+Sorted by ALIAS
+
+                                                      f
+                                                      a
+                                                      k
+                                                      e
+                                                      _
+                                                 f    m
+                                            f    a    i
+                                       f    a    k    s
+                             f         a    k    e    s
+                             a         k    e    _    w
+                             k         e    _    s    i                                                                                              A
+                             e         _    a    o    t                                                                                         A    L         S
+                             _         s    l    m    h                   Z              S    S                        A         G              L    I         T
+                             o         a    l    e    c                   I              T    T         C         A    R    T    M              I    A         A
+                P            n         m    m    m    o                   P              A    A         O         R    E    I    T              A    S         T    m
+                E            e         e    i    i    n                   _              T    T    C    U         E    A    M    O         P    S    _         E    i
+                R       G    v         v    s    s    s                   C         S    E    E    O    N         A    C    E    F         O    _    C    C    N    s
+        F       C       r    a    d    a    s    s    t                   L    C    T    C    N    U    T         C    O    Z    F         N    C    I    I    A    s
+ O      r       E       o    l    a    l    i    i    a    Z              A    I    A    O    A    N    Y    M    O    D    O    S    D    A    I    T    T    M    i
+ b      e       N       u    u    t    u    n    n    n    I              S    T    T    D    M    T    N    S    D    E    N    E    S    M    T    Y    Y    E    n
+ s      q       T       p    e    e    e    g    g    t    P    Y    X    S    Y    E    E    E    Y    M    A    E    S    E    T    T    E    Y    N    2    2    g
+
+ 1    10056    24.4    29    X    X    X    .    .    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    6
+ 2     9164    22.2    16    X    X    X    .    X    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    5
+ 3     5094    12.3    25    X    X    X    .    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    5
+ 4     4003     9.7    12    X    X    X    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    4
+ 5     3473     8.4    27    X    X    X    .    .    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    5
+ 6     2519     6.1    14    X    X    X    .    X    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    4
+ 7     1494     3.6    28    X    X    X    .    .    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    X    5
+ 8     1111     2.7    15    X    X    X    .    X    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    X    4
+ 9      818     2.0    23    X    X    X    .    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    4
+10      687     1.7    26    X    X    X    .    .    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    4
+11      571     1.4     8    X    X    X    .    X    X    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    4
+12      543     1.3    10    X    X    X    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    3
+13      452     1.1    13    X    X    X    .    X    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    3
+14      343     0.8     4    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    3
+15      309     0.7    24    X    X    X    .    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    X    4
+16      153     0.4    11    X    X    X    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    X    3
+17      140     0.3     6    X    X    X    .    X    X    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    3
+18       93     0.2     7    X    X    X    .    X    X    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    X    3
+19       80     0.2     2    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    2
+20       52     0.1    22    X    X    X    .    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    3
+21       37     0.1     9    X    X    X    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    2
+22       27     0.1     5    X    X    X    .    X    X    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    2
+23        8     0.0     1    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    1
+24        8     0.0    18    X    X    X    .    X    .    X    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    6
+25        5     0.0     3    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    X    2
+26        4     0.0    30    X    X    X    .    .    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    6
+27        3     0.0    17    X    X    X    .    X    .    X    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    5
+28        3     0.0    19    X    X    X    .    X    .    X    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    6
+29        3     0.0    21    X    X    X    .    X    .    X    .    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    7
+
+
+
+ These two columns display
+ the montotonic missing pattern.
+ If fake some missing is missing
+ then fake missing with constant is missing.
+
+ Monotonic missing are easier to
+ impute than other patterns.
+
+
+         f
+         a
+         k
+         e
+         _
+    f    m
+    a    i
+    k    s
+    e    s
+    _    w
+    s    i
+    o    t
+    m    h
+    e    c
+    m    o
+    i    n
+    s    s
+    s    t
+    i    a
+    n    n
+    g    t
+
+
+    .    .
+    .    .
+    .    .
+    .    .
+    .    .
+    .    .
+    .    .
+    .    .
+    X    .
+    X    .
+    X    .
+    X    .
+    X    .
+    X    .
+    X    .
+    X    .
+    X    X
+    X    X
+    X    X
+    X    X
+    X    X
+    X    X
+    X    X
+    X    X
+

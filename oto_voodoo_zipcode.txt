@@ -1,0 +1,1472 @@
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Dataset summary for WORK.ZIPCODE
+
+    Observations:         41267       .
+    Variables:            27       .
+    ----------------------------------------
+
+    Variables by type:
+    -------------------
+       Numeric:       11
+         Quantity:         10
+         Date/Time:         1
+
+       Character:     16
+    =========================
+
+
+    Missing or uniformly evaluated variables:
+    ------------------------------------------
+      - missing for all observations:      1
+      - uniformly evaluated -- all:        3
+          with one or more missing values:      1
+          with no missing values:               2
+    ==================================================
+
+
+ #     Variable                                Unique Values       Label                                   Type    Length  Format
+---    --------                                -------------       -----                                   ----    ------  ------
+
+  1    ALIAS_CITY                                     7,049                                                char    300
+  2    ALIAS_CITYN                                    4,128                                                char    300
+  3    AREACODE                                         247                                                num       8
+  4    AREACODES                                        256                                                char     12
+  5    CITY                                          18,700                                                char     35
+  6    CITY2                                         18,560                                                char     35
+  7    COUNTY                                           326                                                num       8
+  8    COUNTYNM                                       1,931                                                char     25
+  9    DST                                                2                                                char      1
+ 10    GMTOFFSET                                         11                                                num       8
+ 11    MSA                                              338                                                num       8
+ 12    PONAME                                        18,700                                                char     35
+ 13    STATE                                             58                                                num       8
+ 14    STATECODE                                         58                                                char      2
+ 15    STATENAME                                         58                                                char     25
+ 16    STATENAME2                                        58                                                char     25
+ 17    TIMEZONE                                          11                                                char      9
+ 18    X                                             41,193                                                num       8     11.6
+ 19    Y                                             41,123                                                num       8     11.6
+ 20    ZIP                                           41,267                                                num       8     Z5.
+ 21    ZIP_CLASS                                          2                                                char      1
+ 22    date                                          41,267                                                num       8     DATE9.
+ 23    fake_allmissing                                    0                                                char      1
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+
+ #     Variable                                Unique Values       Label                                   Type    Length  Format
+---    --------                                -------------       -----                                   ----    ------  ------
+
+ 24    fake_misswithconstant                              1                                                char      1
+ 25    fake_onevalue                                      1                                                char      1
+ 26    fake_samevalue                                     1                                                num       8
+ 27    fake_somemissing                              19,267                                                num       8
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+The following variables are missing or unevaluated for all occurances
+
+      #    Variable Name            Label                                   
+    ---    ---------------------    ----------------------------------------
+                                                                            
+      1    fake_allmissing                                                  
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+The following variables are uniformly evaluated with NO missing values
+a single non-missing value is present for all observations
+
+      #    Variable                 Value                             Label                                   
+    ---    ---------------------    ------------------------------    ----------------------------------------
+                                                                                                              
+      1    fake_onevalue            A                                                                         
+      2    fake_samevalue                                       23                                            
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+The following variables are uniformly evaluated with SOME missing values
+
+                                                                           # of                                            
+                                                                        Missing                                            
+      #    Variable                 Value                                Values    Label                                   
+    ---    ---------------------    ------------------------------    ---------    ----------------------------------------
+                                                                                                                           
+      1    fake_misswithconstant    A                                     40000                                            
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Frequency tabulations of Character variables with <= 10 discrete values
+non-evaluated variables excluded
+
+               #   Variables listed:   Label                                        # of Values
+              ---  ------------------  ----------------------------------------     ---------------
+
+                1 DST..................                                                                        2
+                2 ZIP_CLASS............                                                                        2
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Frequency tabulations of Character variables with <= 10 discrete values
+non-evaluated variables excluded
+
+DST    Frequency     Percent
+----------------------------
+Y         40413       97.93 
+N           854        2.07 
+
+
+ZIP_CLASS    Frequency     Percent
+----------------------------------
+                29812       72.24 
+P                9382       22.73 
+U                2073        5.02 
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+10 most frequent + 10 least frequent values
+For Character variables with > 10 discrete values
+
+               #   Variables listed:   Label                                        # of Values
+              ---  ------------------  ----------------------------------------     ---------------
+
+                1 ALIAS_CITY...........                                                       7,049
+                2 ALIAS_CITYN..........                                                       4,128
+                3 AREACODES............                                                         256
+                4 CITY.................                                                      18,700
+                5 CITY2................                                                      18,560
+                6 COUNTYNM.............                                                       1,931
+                7 PONAME...............                                                      18,700
+                8 STATECODE............                                                          58
+                9 STATENAME............                                                          58
+               10 STATENAME2...........                                                          58
+               11 TIMEZONE.............                                                          11
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+10 most frequent + 10 least frequent values
+For Character variables with > 10 discrete values
+
+
+          10 most frequent values of ALIAS_CITY              ( )
+
+                       7,050 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1                                                                                        32,423
+            2    Phila                                                                                   71
+            3    Colo Spgs||Colorado Spgs                                                                50
+            4    Ft Worth                                                                                38
+            5    Crp Christi                                                                             30
+            6    Salt Lake Cty||Slc                                                                      30
+            7    SaintPetersburg                                                                         21
+            8    Virginia Bch                                                                            19
+            9    Ft Lauderdale                                                                           16
+           10    Richmond                                                                                16
+
+
+          10  least frequent values
+
+        7,040    York Nw Salem                                                                            1
+        7,041    Yorktown Hts                                                                             1
+        7,042    Ysleta Del Sur Pueblo||Ysleta Sur                                                        1
+        7,043    Zell                                                                                     1
+        7,044    Zia Pueblo                                                                               1
+        7,045    Zieglersville                                                                            1
+        7,046    Zigzag                                                                                   1
+        7,047    Zim                                                                                      1
+        7,048    Zion Crossrds||Zion Crossroads                                                           1
+        7,049    Zion National Park||Zion Ntl Park                                                        1
+        7,050    Zoarville                                                                                1
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+10 most frequent + 10 least frequent values
+For Character variables with > 10 discrete values
+
+
+          10 most frequent values of ALIAS_CITYN             ( )
+
+                       4,129 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1                                                                                        36,837
+            2    Manhattan||New York City||Ny||Ny City||Nyc                                              72
+            3    Mem||MPHS                                                                               37
+            4    HON||Hono                                                                               32
+            5    JAX||Jksn||JXN                                                                          26
+            6    Pgh||Pitt                                                                               23
+            7    Overland||Sm                                                                            13
+            8    HFD||HTFD                                                                               10
+            9    Cimarron Hills||Co Spgs                                                                  7
+           10    New York City||Ny||Ny City||Nyc                                                          6
+
+
+          10  least frequent values
+
+        4,119    Winston Salem Brm||Winston-Salem                                                         1
+        4,120    Winston Salem Courtesy Reply||Winston-Salem                                              1
+        4,121    Winston-Salem||Ws State Univ                                                             1
+        4,122    Winthrop University||Withrop College                                                     1
+        4,123    Wlmg||Wmsbg                                                                              1
+        4,124    Woods Cr Rds||Woods Cross Rds                                                            1
+        4,125    Yeoward Addition||Yeowardville                                                           1
+        4,126    Yorktown||Yorktown Hgts                                                                  1
+        4,127    anthem/blue cross blue shiel||Rich                                                       1
+        4,128    okc||Okla Univ Health Sci Ctr                                                            1
+        4,129    okc||Valley Brook                                                                        1
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+10 most frequent + 10 least frequent values
+For Character variables with > 10 discrete values
+
+
+          10 most frequent values of AREACODES               ( )
+
+                         256 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    304/681                                                                                850
+            2    207                                                                                    486
+            3    814                                                                                    467
+            4    870                                                                                    424
+            5    402                                                                                    421
+            6    570                                                                                    420
+            7    606                                                                                    412
+            8    701                                                                                    406
+            9    406                                                                                    404
+           10    724/878                                                                                402
+
+
+          10  least frequent values
+
+          246    503                                                                                      3
+          247    670                                                                                      3
+          248    708                                                                                      3
+          249    215                                                                                      2
+          250    692                                                                                      2
+          251    847                                                                                      2
+          252    205                                                                                      1
+          253    248                                                                                      1
+          254    425                                                                                      1
+          255    680                                                                                      1
+          256    817                                                                                      1
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+10 most frequent + 10 least frequent values
+For Character variables with > 10 discrete values
+
+
+          10 most frequent values of CITY                    ( )
+
+                      18,700 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    Washington                                                                             299
+            2    Houston                                                                                187
+            3    New York                                                                               149
+            4    El Paso                                                                                140
+            5    Dallas                                                                                 114
+            6    Springfield                                                                            107
+            7    Sacramento                                                                             105
+            8    Atlanta                                                                                103
+            9    Miami                                                                                  100
+           10    Los Angeles                                                                             94
+
+
+          10  least frequent values
+
+       18,690    Zirconia                                                                                 1
+       18,691    Zoar                                                                                     1
+       18,692    Zoe                                                                                      1
+       18,693    Zolfo Springs                                                                            1
+       18,694    Zortman                                                                                  1
+       18,695    Zullinger                                                                                1
+       18,696    Zumbro Falls                                                                             1
+       18,697    Zumbrota                                                                                 1
+       18,698    Zurich                                                                                   1
+       18,699    Zwingle                                                                                  1
+       18,700    Zwolle                                                                                   1
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+10 most frequent + 10 least frequent values
+For Character variables with > 10 discrete values
+
+
+          10 most frequent values of CITY2                   ( )
+
+                      18,560 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    WASHINGTON                                                                             299
+            2    HOUSTON                                                                                187
+            3    NEWYORK                                                                                149
+            4    ELPASO                                                                                 140
+            5    DALLAS                                                                                 114
+            6    SPRINGFIELD                                                                            107
+            7    SACRAMENTO                                                                             105
+            8    ATLANTA                                                                                103
+            9    MIAMI                                                                                  100
+           10    LOSANGELES                                                                              94
+
+
+          10  least frequent values
+
+       18,550    ZIRCONIA                                                                                 1
+       18,551    ZOAR                                                                                     1
+       18,552    ZOE                                                                                      1
+       18,553    ZOLFOSPRINGS                                                                             1
+       18,554    ZORTMAN                                                                                  1
+       18,555    ZULLINGER                                                                                1
+       18,556    ZUMBROFALLS                                                                              1
+       18,557    ZUMBROTA                                                                                 1
+       18,558    ZURICH                                                                                   1
+       18,559    ZWINGLE                                                                                  1
+       18,560    ZWOLLE                                                                                   1
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+10 most frequent + 10 least frequent values
+For Character variables with > 10 discrete values
+
+
+          10 most frequent values of COUNTYNM                ( )
+
+                       1,931 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    Los Angeles                                                                            507
+            2    Jefferson                                                                              496
+            3    Washington                                                                             453
+            4    Montgomery                                                                             393
+            5    Orange                                                                                 337
+            6    Franklin                                                                               334
+            7    Jackson                                                                                291
+            8    District of Columbia                                                                   279
+            9    Wayne                                                                                  252
+           10    Marion                                                                                 241
+
+
+          10  least frequent values
+
+        1,921    Tyrrell                                                                                  1
+        1,922    Vega Alta                                                                                1
+        1,923    Vieques                                                                                  1
+        1,924    Villalba                                                                                 1
+        1,925    Walthall                                                                                 1
+        1,926    Waynesboro City                                                                          1
+        1,927    Wibaux                                                                                   1
+        1,928    Wrangell                                                                                 1
+        1,929    Yabucoa                                                                                  1
+        1,930    Yakutat                                                                                  1
+        1,931    Yauco                                                                                    1
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+10 most frequent + 10 least frequent values
+For Character variables with > 10 discrete values
+
+
+          10 most frequent values of PONAME                  ( )
+
+                      18,700 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    Washington                                                                             299
+            2    Houston                                                                                187
+            3    New York                                                                               149
+            4    El Paso                                                                                140
+            5    Dallas                                                                                 114
+            6    Springfield                                                                            107
+            7    Sacramento                                                                             105
+            8    Atlanta                                                                                103
+            9    Miami                                                                                  100
+           10    Los Angeles                                                                             94
+
+
+          10  least frequent values
+
+       18,690    Zirconia                                                                                 1
+       18,691    Zoar                                                                                     1
+       18,692    Zoe                                                                                      1
+       18,693    Zolfo Springs                                                                            1
+       18,694    Zortman                                                                                  1
+       18,695    Zullinger                                                                                1
+       18,696    Zumbro Falls                                                                             1
+       18,697    Zumbrota                                                                                 1
+       18,698    Zurich                                                                                   1
+       18,699    Zwingle                                                                                  1
+       18,700    Zwolle                                                                                   1
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+10 most frequent + 10 least frequent values
+For Character variables with > 10 discrete values
+
+
+          10 most frequent values of STATECODE               ( )
+
+                          58 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    CA                                                                                   2,603
+            2    TX                                                                                   2,599
+            3    PA                                                                                   2,186
+            4    NY                                                                                   2,160
+            5    IL                                                                                   1,576
+            6    FL                                                                                   1,469
+            7    OH                                                                                   1,418
+            8    VA                                                                                   1,216
+            9    MI                                                                                   1,159
+           10    MO                                                                                   1,158
+
+
+          10  least frequent values
+
+           48    WY                                                                                     195
+           49    PR                                                                                     176
+           50    HI                                                                                     137
+           51    DE                                                                                      96
+           52    RI                                                                                      90
+           53    VI                                                                                      16
+           54    GU                                                                                      13
+           55    FM                                                                                       4
+           56    MP                                                                                       3
+           57    MH                                                                                       2
+           58    PW                                                                                       2
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+10 most frequent + 10 least frequent values
+For Character variables with > 10 discrete values
+
+
+          10 most frequent values of STATENAME               ( )
+
+                          58 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    California                                                                           2,603
+            2    Texas                                                                                2,599
+            3    Pennsylvania                                                                         2,186
+            4    New York                                                                             2,160
+            5    Illinois                                                                             1,576
+            6    Florida                                                                              1,469
+            7    Ohio                                                                                 1,418
+            8    Virginia                                                                             1,216
+            9    Michigan                                                                             1,159
+           10    Missouri                                                                             1,158
+
+
+          10  least frequent values
+
+           48    Wyoming                                                                                195
+           49    Puerto Rico                                                                            176
+           50    Hawaii                                                                                 137
+           51    Delaware                                                                                96
+           52    Rhode Island                                                                            90
+           53    Virgin Islands                                                                          16
+           54    Guam                                                                                    13
+           55    Federated States of Micro                                                                4
+           56    Northern Mariana Islands                                                                 3
+           57    Marshall Islands                                                                         2
+           58    Palau                                                                                    2
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+10 most frequent + 10 least frequent values
+For Character variables with > 10 discrete values
+
+
+          10 most frequent values of STATENAME2              ( )
+
+                          58 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    CALIFORNIA                                                                           2,603
+            2    TEXAS                                                                                2,599
+            3    PENNSYLVANIA                                                                         2,186
+            4    NEWYORK                                                                              2,160
+            5    ILLINOIS                                                                             1,576
+            6    FLORIDA                                                                              1,469
+            7    OHIO                                                                                 1,418
+            8    VIRGINIA                                                                             1,216
+            9    MICHIGAN                                                                             1,159
+           10    MISSOURI                                                                             1,158
+
+
+          10  least frequent values
+
+           48    WYOMING                                                                                195
+           49    PUERTORICO                                                                             176
+           50    HAWAII                                                                                 137
+           51    DELAWARE                                                                                96
+           52    RHODEISLAND                                                                             90
+           53    VIRGINISLANDS                                                                           16
+           54    GUAM                                                                                    13
+           55    FEDERATEDSTATESOFMICRO                                                                   4
+           56    NORTHERNMARIANAISLANDS                                                                   3
+           57    MARSHALLISLANDS                                                                          2
+           58    PALAU                                                                                    2
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+10 most frequent + 10 least frequent values
+For Character variables with > 10 discrete values
+
+
+          10 most frequent values of TIMEZONE                ( )
+
+                          11 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    Eastern                                                                             18,657
+            2    Central                                                                             14,698
+            3    Pacific                                                                              4,123
+            4    Mountain                                                                             3,163
+            5    Alaska                                                                                 266
+            6    Atlantic                                                                               192
+            7    Hawaii                                                                                 144
+            8    UTC+10                                                                                  16
+            9    UTC+11                                                                                   4
+           10    UTC+12                                                                                   2
+           11    UTC+9                                                                                    2
+
+
+          10  least frequent values
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+10 most frequent + 10 least frequent values
+For Character variables with > 10 discrete values
+
+*   *  *   *  *   *         *****  ****   *****   ***   
+**  *  *   *  ** **         *      *   *  *      *   *  
+* * *  *   *  * * *         *      *   *  *      *   *  
+*  **  *   *  *   *         ****   ****   ****   *   *  
+*   *  *   *  *   *         *      * *    *      * * *  
+*   *  *   *  *   *         *      *  *   *      *  **  
+*   *   ***   *   *         *      *   *  *****   ****  
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Frequency tabulations of numeric variables with <= 10 discrete values
+non-evaluated variables excluded
+
+               #   Variables listed:   Label                                        # of Values
+              ---  ------------------  ----------------------------------------     ---------------
+
+                1 AREACODE.............                                                                      247
+                2 COUNTY...............                                                                      326
+                3 GMTOFFSET............                                                                       11
+                4 MSA..................                                                                      338
+                5 STATE................                                                                       58
+                6 X....................                                                                   41,193
+                7 Y....................                                                                   41,123
+                8 ZIP..................                                                                   41,267
+                9 fake_somemissing.....                                                                   19,267
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Frequency tabulations of numeric variables with <= 10 discrete values
+non-evaluated variables excluded
+
+
+          10 most frequent values of AREACODE                ( )
+
+                         247 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    304                                                                                    850
+            2    207                                                                                    486
+            3    814                                                                                    467
+            4    870                                                                                    424
+            5    402                                                                                    421
+            6    570                                                                                    420
+            7    606                                                                                    412
+            8    701                                                                                    406
+            9    406                                                                                    404
+           10    724                                                                                    402
+
+
+          10  least frequent values
+
+          237    623                                                                                     40
+          238    925                                                                                     40
+          239    228                                                                                     38
+          240    858                                                                                     28
+          241    340                                                                                     16
+          242    671                                                                                     14
+          243    691                                                                                      4
+          244    0                                                                                        3
+          245    670                                                                                      3
+          246    692                                                                                      2
+          247    680                                                                                      1
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Frequency tabulations of numeric variables with <= 10 discrete values
+non-evaluated variables excluded
+
+
+          10 most frequent values of COUNTY                  ( )
+
+                         326 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    1                                                                                    1,179
+            2    3                                                                                    1,148
+            3    37                                                                                     934
+            4    13                                                                                     871
+            5    31                                                                                     866
+            6    19                                                                                     802
+            7    5                                                                                      744
+            8    17                                                                                     717
+            9    9                                                                                      693
+           10    27                                                                                     670
+
+
+          10  least frequent values
+
+          316    530                                                                                      1
+          317    570                                                                                      1
+          318    580                                                                                      1
+          319    620                                                                                      1
+          320    640                                                                                      1
+          321    670                                                                                      1
+          322    678                                                                                      1
+          323    685                                                                                      1
+          324    720                                                                                      1
+          325    735                                                                                      1
+          326    820                                                                                      1
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Frequency tabulations of numeric variables with <= 10 discrete values
+non-evaluated variables excluded
+
+
+          10 most frequent values of GMTOFFSET               ( )
+
+                          11 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    -5                                                                                  18,657
+            2    -6                                                                                  14,698
+            3    -8                                                                                   4,123
+            4    -7                                                                                   3,163
+            5    -9                                                                                     266
+            6    -4                                                                                     192
+            7    -10                                                                                    144
+            8    10                                                                                      16
+            9    11                                                                                       4
+           10    9                                                                                        2
+           11    12                                                                                       2
+
+
+          10  least frequent values
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Frequency tabulations of numeric variables with <= 10 discrete values
+non-evaluated variables excluded
+
+
+          10 most frequent values of MSA                     ( )
+
+                         338 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    0                                                                                   18,764
+            2    8840                                                                                   767
+            3    4480                                                                                   508
+            4    6160                                                                                   464
+            5    5600                                                                                   432
+            6    1600                                                                                   412
+            7    6280                                                                                   404
+            8    5120                                                                                   306
+            9    3360                                                                                   302
+           10    520                                                                                    291
+
+
+          10  least frequent values
+
+          328    5990                                                                                    11
+          329    6820                                                                                    11
+          330    8750                                                                                    11
+          331    2980                                                                                    10
+          332    3285                                                                                    10
+          333    4840                                                                                    10
+          334    470                                                                                      8
+          335    1310                                                                                     8
+          336    1890                                                                                     8
+          337    4150                                                                                     8
+          338    60                                                                                       6
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Frequency tabulations of numeric variables with <= 10 discrete values
+non-evaluated variables excluded
+
+
+          10 most frequent values of STATE                   ( )
+
+                          58 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    6                                                                                    2,603
+            2    48                                                                                   2,599
+            3    42                                                                                   2,186
+            4    36                                                                                   2,160
+            5    17                                                                                   1,576
+            6    12                                                                                   1,469
+            7    39                                                                                   1,418
+            8    51                                                                                   1,216
+            9    26                                                                                   1,159
+           10    29                                                                                   1,158
+
+
+          10  least frequent values
+
+           48    56                                                                                     195
+           49    72                                                                                     176
+           50    15                                                                                     137
+           51    10                                                                                      96
+           52    44                                                                                      90
+           53    78                                                                                      16
+           54    66                                                                                      13
+           55    64                                                                                       4
+           56    69                                                                                       3
+           57    68                                                                                       2
+           58    70                                                                                       2
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Frequency tabulations of numeric variables with <= 10 discrete values
+non-evaluated variables excluded
+
+
+          10 most frequent values of X                       ( )
+
+                      41,194 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    .                                                                                       14
+            2    -77.028999                                                                               8
+            3    0.000000                                                                                 5
+            4    -115.139969                                                                              4
+            5    -122.441650                                                                              3
+            6    -85.766403                                                                               3
+            7    -76.331711                                                                               3
+            8    -123.014262                                                                              2
+            9    -122.329437                                                                              2
+           10    -112.075768                                                                              2
+
+
+          10  least frequent values
+
+       41,184    144.800124                                                                               1
+       41,185    144.835826                                                                               1
+       41,186    144.899632                                                                               1
+       41,187    145.245515                                                                               1
+       41,188    145.652262                                                                               1
+       41,189    145.756677                                                                               1
+       41,190    151.653461                                                                               1
+       41,191    158.209053                                                                               1
+       41,192    162.962756                                                                               1
+       41,193    170.855049                                                                               1
+       41,194    171.062651                                                                               1
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Frequency tabulations of numeric variables with <= 10 discrete values
+non-evaluated variables excluded
+
+
+          10 most frequent values of Y                       ( )
+
+                      41,124 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    .                                                                                       35
+            2    38.899101                                                                                8
+            3    0.000000                                                                                 5
+            4    36.171909                                                                                4
+            5    32.514610                                                                                3
+            6    38.254860                                                                                3
+            7    40.023731                                                                                3
+            8    47.255131                                                                                3
+            9    30.443359                                                                                2
+           10    31.759159                                                                                2
+
+
+          10  least frequent values
+
+       41,114    67.632189                                                                                1
+       41,115    68.139958                                                                                1
+       41,116    68.240851                                                                                1
+       41,117    68.530422                                                                                1
+       41,118    69.538747                                                                                1
+       41,119    69.877219                                                                                1
+       41,120    70.015200                                                                                1
+       41,121    70.235770                                                                                1
+       41,122    70.472212                                                                                1
+       41,123    70.565980                                                                                1
+       41,124    70.669760                                                                                1
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Frequency tabulations of numeric variables with <= 10 discrete values
+non-evaluated variables excluded
+
+
+          10 most frequent values of ZIP                     ( )
+
+                      41,267 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    00501                                                                                    1
+            2    00544                                                                                    1
+            3    00601                                                                                    1
+            4    00602                                                                                    1
+            5    00603                                                                                    1
+            6    00604                                                                                    1
+            7    00605                                                                                    1
+            8    00606                                                                                    1
+            9    00610                                                                                    1
+           10    00611                                                                                    1
+
+
+          10  least frequent values
+
+       41,257    99918                                                                                    1
+       41,258    99919                                                                                    1
+       41,259    99921                                                                                    1
+       41,260    99922                                                                                    1
+       41,261    99923                                                                                    1
+       41,262    99925                                                                                    1
+       41,263    99926                                                                                    1
+       41,264    99927                                                                                    1
+       41,265    99928                                                                                    1
+       41,266    99929                                                                                    1
+       41,267    99950                                                                                    1
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Frequency tabulations of numeric variables with <= 10 discrete values
+non-evaluated variables excluded
+
+
+          10 most frequent values of fake_somemissing        ( )
+
+                      19,268 distinct values in total
+
+          Rank     Value                                                                           Frequency
+          ----     -----                                                                           ---------
+
+
+            1    .                                                                                   22,000
+            2    22001                                                                                    1
+            3    22002                                                                                    1
+            4    22003                                                                                    1
+            5    22004                                                                                    1
+            6    22005                                                                                    1
+            7    22006                                                                                    1
+            8    22007                                                                                    1
+            9    22008                                                                                    1
+           10    22009                                                                                    1
+
+
+          10  least frequent values
+
+       19,258    41257                                                                                    1
+       19,259    41258                                                                                    1
+       19,260    41259                                                                                    1
+       19,261    41260                                                                                    1
+       19,262    41261                                                                                    1
+       19,263    41262                                                                                    1
+       19,264    41263                                                                                    1
+       19,265    41264                                                                                    1
+       19,266    41265                                                                                    1
+       19,267    41266                                                                                    1
+       19,268    41267                                                                                    1
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Frequency tabulations of numeric variables with <= 10 discrete values
+non-evaluated variables excluded
+
+*   *  *****    *    *   *   ***   
+** **  *       * *   **  *  *   *  
+* * *  *      *   *  * * *   *     
+*   *  ****   *****  *  **    *    
+*   *  *      *   *  *   *     *   
+*   *  *      *   *  *   *  *   *  
+*   *  *****  *   *  *   *   ***   
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Frequency tabulations of numeric variables with <= 10 discrete values
+non-evaluated variables excluded
+
+                                 N
+Variable                N     Miss         Minimum         Maximum            Mean          Median         Std Dev             Sum
+----------------------------------------------------------------------------------------------------------------------------------
+AREACODE            41267        0               0     989.0000000     576.5067730     601.0000000     232.5345628     23790705.00
+COUNTY              41267        0       1.0000000     840.0000000      85.6999297      65.0000000      91.3830082      3536579.00
+GMTOFFSET           41267        0     -10.0000000      12.0000000      -5.8389028      -6.0000000       1.0903211      -240954.00
+MSA                 41267        0               0         9360.00         2521.63     875.0000000         3000.82       104060049
+STATE               41267        0       1.0000000      78.0000000      29.4917973      29.0000000      15.7825823      1217038.00
+X                   41253       14    -176.6588890     171.0626510     -90.8644819     -87.8955410      16.4182010     -3748432.47
+Y                   41232       35               0      70.6697600      38.4924370      39.1192095       5.4568494      1587120.16
+ZIP                 41267        0     501.0000000        99950.00        49571.48        48847.00        27952.14      2045666367
+date                41267        0        19001.00        60267.00        39634.00        39634.00        11912.90      1635576278
+fake_somemissing    19267    22000        22001.00        41267.00        31634.00        31634.00         5562.05       609492278
+----------------------------------------------------------------------------------------------------------------------------------
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Date/Time/Datetime Variables
+non-evaluated variables excluded
+
+               #   Variables listed:   Label                                        # of Values
+              ---  ------------------  ----------------------------------------     ---------------
+
+                1 date.................                                                                   41,267
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Date/Time/Datetime Variables
+non-evaluated variables excluded
+
+
+
+    Univariate distribution of date (   ) values
+    Distinct values: 41,267
+    Format in dataset:  DATE9.
+    -----------------------------------------------------------------
+
+    n        41,267                              min       01/09/2012
+    nmiss         0                              P1        02/24/2013
+                                                 P5        09/02/2017
+    mean                 07/06/2068              P10       04/27/2023
+    std - days               11,912.90           Q1        04/07/2040
+    std - years                  32.64           median    07/06/2068
+                                                 Q3        10/04/2096
+    range - days             41,266              P90       09/16/2113
+    range - years               113.06           P95       05/11/2119
+                                                 P99       11/17/2123
+    Q1-Q3 - days             20,634              max       01/02/2125
+    Q1-Q3 - years                56.53
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Date/Time/Datetime Variables
+non-evaluated variables excluded
+
+*   *  *   *  *****  *   *    *    ****   
+*   *  **  *    *    *   *   * *   *   *  
+*   *  * * *    *    *   *  *   *  *   *  
+*   *  *  **    *    *   *  *****  ****   
+*   *  *   *    *    *   *  *   *  * *    
+*   *  *   *    *     * *   *   *  *  *   
+ ***   *   *  *****    *    *   *  *   *  
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Date/Time/Datetime Variables
+non-evaluated variables excluded
+
+****   ****   *****  *   *    *    ****   *   *         *   *  *****  *   *  
+*   *  *   *    *    ** **   * *   *   *  *   *         *  *   *      *   *  
+*   *  *   *    *    * * *  *   *  *   *   * *          * *    *       * *   
+****   ****     *    *   *  *****  ****     *           **     ****     *    
+*      * *      *    *   *  *   *  * *      *           * *    *        *    
+*      *  *     *    *   *  *   *  *  *     *           *  *   *        *    
+*      *   *  *****  *   *  *   *  *   *    *           *   *  *****    *    
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Date/Time/Datetime Variables
+non-evaluated variables excluded
+******************************************************************
+*                                                                *
+* No duplicates in zip in work zipcode
+*                                                                *
+******************************************************************
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Date/Time/Datetime Variables
+non-evaluated variables excluded
+
+ ***    ***   *   *  *****  *****  *   *  *****   ***   
+*   *  *   *  **  *    *    *      **  *    *    *   *  
+*      *   *  * * *    *    *      * * *    *     *     
+*      *   *  *  **    *    ****   *  **    *      *    
+*      *   *  *   *    *    *      *   *    *       *   
+*   *  *   *  *   *    *    *      *   *    *    *   *  
+ ***    ***   *   *    *    *****  *   *    *     ***   
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Date/Time/Datetime Variables
+non-evaluated variables excluded
+
+*   *  *****   ***    ***          ****     *    *****  
+** **    *    *   *  *   *         *   *   * *     *    
+* * *    *     *      *            *   *  *   *    *    
+*   *    *      *      *           ****   *****    *    
+*   *    *       *      *          *      *   *    *    
+*   *    *    *   *  *   *         *      *   *    *    
+*   *  *****   ***    ***          *      *   *    *    
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Variable Name Aliases for zipcode for Use in Mising Value Pattern Analysis
+Sorted by ALIAS
+
+                                                      f
+                                                      a
+                                                      k
+                                                      e
+                                                      _
+                                                 f    m
+                                            f    a    i
+                                       f    a    k    s
+                             f         a    k    e    s
+                             a         k    e    _    w
+                             k         e    _    s    i                                                                                              A
+                             e         _    a    o    t                                                                                         A    L         S
+                             _         s    l    m    h                   Z              S    S                        A         G              L    I         T
+                             o         a    l    e    c                   I              T    T         C         A    R    T    M              I    A         A
+                P            n         m    m    m    o                   P              A    A         O         R    E    I    T              A    S         T    m
+                E            e         e    i    i    n                   _              T    T    C    U         E    A    M    O         P    S    _         E    i
+                R       G    v         v    s    s    s                   C         S    E    E    O    N         A    C    E    F         O    _    C    C    N    s
+        F       C       r    a    d    a    s    s    t                   L    C    T    C    N    U    T         C    O    Z    F         N    C    I    I    A    s
+ O      r       E       o    l    a    l    i    i    a    Z              A    I    A    O    A    N    Y    M    O    D    O    S    D    A    I    T    T    M    i
+ b      e       N       u    u    t    u    n    n    n    I              S    T    T    D    M    T    N    S    D    E    N    E    S    M    T    Y    Y    E    n
+ s      q       T       p    e    e    e    g    g    t    P    Y    X    S    Y    E    E    E    Y    M    A    E    S    E    T    T    E    Y    N    2    2    g
+
+ 1    10056    24.4    29    X    X    X    .    .    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    6
+ 2     9164    22.2    16    X    X    X    .    X    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    5
+ 3     5094    12.3    25    X    X    X    .    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    5
+ 4     4003     9.7    12    X    X    X    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    4
+ 5     3473     8.4    27    X    X    X    .    .    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    5
+ 6     2519     6.1    14    X    X    X    .    X    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    4
+ 7     1494     3.6    28    X    X    X    .    .    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    X    5
+ 8     1111     2.7    15    X    X    X    .    X    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    X    4
+ 9      818     2.0    23    X    X    X    .    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    4
+10      687     1.7    26    X    X    X    .    .    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    4
+11      571     1.4     8    X    X    X    .    X    X    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    4
+12      543     1.3    10    X    X    X    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    3
+13      452     1.1    13    X    X    X    .    X    .    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    3
+14      343     0.8     4    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    3
+15      309     0.7    24    X    X    X    .    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    X    4
+16      153     0.4    11    X    X    X    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    X    3
+17      140     0.3     6    X    X    X    .    X    X    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    3
+18       93     0.2     7    X    X    X    .    X    X    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    X    3
+19       80     0.2     2    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    2
+20       52     0.1    22    X    X    X    .    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    3
+21       37     0.1     9    X    X    X    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    2
+22       27     0.1     5    X    X    X    .    X    X    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    2
+23        8     0.0     1    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    1
+24        8     0.0    18    X    X    X    .    X    .    X    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    6
+25        5     0.0     3    X    X    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    X    2
+26        4     0.0    30    X    X    X    .    .    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    6
+27        3     0.0    17    X    X    X    .    X    .    X    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    5
+28        3     0.0    19    X    X    X    .    X    .    X    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    6
+29        3     0.0    21    X    X    X    .    X    .    X    .    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    7
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Variable Name Aliases for zipcode for Use in Mising Value Pattern Analysis
+Sorted by ALIAS
+
+                                                      f
+                                                      a
+                                                      k
+                                                      e
+                                                      _
+                                                 f    m
+                                            f    a    i
+                                       f    a    k    s
+                             f         a    k    e    s
+                             a         k    e    _    w
+                             k         e    _    s    i                                                                                              A
+                             e         _    a    o    t                                                                                         A    L         S
+                             _         s    l    m    h                   Z              S    S                        A         G              L    I         T
+                             o         a    l    e    c                   I              T    T         C         A    R    T    M              I    A         A
+                P            n         m    m    m    o                   P              A    A         O         R    E    I    T              A    S         T    m
+                E            e         e    i    i    n                   _              T    T    C    U         E    A    M    O         P    S    _         E    i
+                R       G    v         v    s    s    s                   C         S    E    E    O    N         A    C    E    F         O    _    C    C    N    s
+        F       C       r    a    d    a    s    s    t                   L    C    T    C    N    U    T         C    O    Z    F         N    C    I    I    A    s
+ O      r       E       o    l    a    l    i    i    a    Z              A    I    A    O    A    N    Y    M    O    D    O    S    D    A    I    T    T    M    i
+ b      e       N       u    u    t    u    n    n    n    I              S    T    T    D    M    T    N    S    D    E    N    E    S    M    T    Y    Y    E    n
+ s      q       T       p    e    e    e    g    g    t    P    Y    X    S    Y    E    E    E    Y    M    A    E    S    E    T    T    E    Y    N    2    2    g
+
+30        3     0.0    31    X    X    X    .    .    .    X    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    6
+31        3     0.0    32    X    X    X    .    .    .    X    .    X    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    7
+32        2     0.0    34    X    X    X    .    .    .    X    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    7
+33        2     0.0    35    X    X    X    .    .    .    X    .    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    X    7
+34        2     0.0    36    X    X    X    .    .    .    X    .    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    .    .    X    X    8
+35        1     0.0    20    X    X    X    .    X    .    X    .    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    6
+36        1     0.0    33    X    X    X    .    .    .    X    .    .    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    .    X    X    6
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+
+Data Set Name        WORK.ZIPCODE                  Observations          41267
+Member Type          DATA                          Variables             27   
+Engine               V9                            Indexes               0    
+Created              02/21/2016 18:10:53           Observation Length    896  
+Last Modified        02/21/2016 18:16:02           Deleted Observations  0    
+Protection                                         Compressed            NO   
+Data Set Type                                      Sorted                NO   
+Label                                                                         
+Data Representation  WINDOWS_64                                               
+Encoding             wlatin1  Western (Windows)                               
+
+
+                      Engine/Host Dependent Information
+
+Data Set Page Size          73728                                            
+Number of Data Set Pages    504                                              
+First Data Page             1                                                
+Max Obs per Page            82                                               
+Obs in First Data Page      77                                               
+Number of Data Set Repairs  0                                                
+ExtendObsCounter            YES                                              
+Filename                    e:\saswork\wrk\_TD4368_DENBEAST_\zipcode.sas7bdat
+Release Created             9.0401M2                                         
+Host Created                X64_7PRO                                         
+
+
+     Alphabetic List of Variables and Attributes
+ 
+ #    Variable                 Type    Len    Format
+
+24    ALIAS_CITY               Char    300          
+25    ALIAS_CITYN              Char    300          
+18    AREACODE                 Num       8          
+19    AREACODES                Char     12          
+11    CITY                     Char     35          
+26    CITY2                    Char     35          
+15    COUNTY                   Num       8          
+16    COUNTYNM                 Char     25          
+22    DST                      Char      1          
+21    GMTOFFSET                Num       8          
+17    MSA                      Num       8          
+23    PONAME                   Char     35          
+12    STATE                    Num       8          
+13    STATECODE                Char      2          
+14    STATENAME                Char     25          
+27    STATENAME2               Char     25          
+20    TIMEZONE                 Char      9          
+ 9    X                        Num       8    11.6  
+ 8    Y                        Num       8    11.6  
+ 7    ZIP                      Num       8    Z5.   
+10    ZIP_CLASS                Char      1          
+ 2    date                     Num       8    DATE9.
+ 4    fake_allmissing          Char      1          
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+
+     Alphabetic List of Variables and Attributes
+ 
+ #    Variable                 Type    Len    Format
+
+ 6    fake_misswithconstant    Char      1          
+ 1    fake_onevalue            Char      1          
+ 3    fake_samevalue           Num       8          
+ 5    fake_somemissing         Num       8          
+
+
+             Variables in Creation Order
+ 
+ #    Variable                 Type    Len    Format
+
+ 1    fake_onevalue            Char      1          
+ 2    date                     Num       8    DATE9.
+ 3    fake_samevalue           Num       8          
+ 4    fake_allmissing          Char      1          
+ 5    fake_somemissing         Num       8          
+ 6    fake_misswithconstant    Char      1          
+ 7    ZIP                      Num       8    Z5.   
+ 8    Y                        Num       8    11.6  
+ 9    X                        Num       8    11.6  
+10    ZIP_CLASS                Char      1          
+11    CITY                     Char     35          
+12    STATE                    Num       8          
+13    STATECODE                Char      2          
+14    STATENAME                Char     25          
+15    COUNTY                   Num       8          
+16    COUNTYNM                 Char     25          
+17    MSA                      Num       8          
+18    AREACODE                 Num       8          
+19    AREACODES                Char     12          
+20    TIMEZONE                 Char      9          
+21    GMTOFFSET                Num       8          
+22    DST                      Char      1          
+23    PONAME                   Char     35          
+24    ALIAS_CITY               Char    300          
+25    ALIAS_CITYN              Char    300          
+26    CITY2                    Char     35          
+27    STATENAME2               Char     25          
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Sample observations  --  showing first, last, and middle 20 records
+
+Records 1 - 20
+
+       fake_                   fake_       fake_         fake_                                                                  ZIP_
+  Obs onevalue        date   samevalue   allmissing   somemissing   fake_misswithconstant     ZIP             Y             X   CLASS   CITY          STATE   STATECODE    STATENAME
+
+    1    A       09JAN2012       23                        .                                00501     40.813078    -73.046388     U     Holtsville      36       NY       New York   
+    2    A       10JAN2012       23                        .                                00544     40.813223    -73.049288     U     Holtsville      36       NY       New York   
+    3    A       11JAN2012       23                        .                                00601     18.165950    -66.723627           Adjuntas        72       PR       Puerto Rico
+    4    A       12JAN2012       23                        .                                00602     18.383005    -67.186553           Aguada          72       PR       Puerto Rico
+    5    A       13JAN2012       23                        .                                00603     18.433236    -67.151954           Aguadilla       72       PR       Puerto Rico
+    6    A       14JAN2012       23                        .                                00604     18.505289    -67.135899     P     Aguadilla       72       PR       Puerto Rico
+    7    A       15JAN2012       23                        .                                00605     18.436149    -67.151346     P     Aguadilla       72       PR       Puerto Rico
+    8    A       16JAN2012       23                        .                                00606     18.185616    -66.977377           Maricao         72       PR       Puerto Rico
+    9    A       17JAN2012       23                        .                                00610     18.285948    -67.144161           Anasco          72       PR       Puerto Rico
+   10    A       18JAN2012       23                        .                                00611     18.287716    -66.797578     P     Angeles         72       PR       Puerto Rico
+   11    A       19JAN2012       23                        .                                00612     18.471326    -66.728149           Arecibo         72       PR       Puerto Rico
+   12    A       20JAN2012       23                        .                                00613     18.472737    -66.719283     P     Arecibo         72       PR       Puerto Rico
+   13    A       21JAN2012       23                        .                                00614     18.456904    -66.735892     P     Arecibo         72       PR       Puerto Rico
+   14    A       22JAN2012       23                        .                                00616     18.426456    -66.673779           Bajadero        72       PR       Puerto Rico
+   15    A       23JAN2012       23                        .                                00617     18.458792    -66.537234           Barceloneta     72       PR       Puerto Rico
+   16    A       24JAN2012       23                        .                                00622     18.017976    -67.170627           Boqueron        72       PR       Puerto Rico
+   17    A       25JAN2012       23                        .                                00623     18.086721    -67.151780           Cabo Rojo       72       PR       Puerto Rico
+   18    A       26JAN2012       23                        .                                00624     18.063481    -66.723612           Penuelas        72       PR       Puerto Rico
+   19    A       27JAN2012       23                        .                                00627     18.485866    -66.844057           Camuy           72       PR       Puerto Rico
+   20    A       28JAN2012       23                        .                                00631     18.180272    -66.832917     P     Castaner        72       PR       Puerto Rico
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Sample observations  --  showing first, last, and middle 20 records
+
+Records 1 - 20
+
+                                                                                                               ALIAS_
+  Obs COUNTY    COUNTYNM        MSA    AREACODE    AREACODES    TIMEZONE    GMTOFFSET    DST    PONAME         CITY
+
+    1   103     Suffolk        5380       631       631         Eastern         -5        Y     Holtsville             
+    2   103     Suffolk        5380       631       631         Eastern         -5        Y     Holtsville             
+    3     1     Adjuntas          0       787       787/939     Atlantic        -4        N     Adjuntas               
+    4     3     Aguada           60       787       787/939     Atlantic        -4        N     Aguada                 
+    5     5     Aguadilla        60       787       787/939     Atlantic        -4        N     Aguadilla      Ramey   
+    6     5     Aguadilla        60       787       787/939     Atlantic        -4        N     Aguadilla      Ramey   
+    7     5     Aguadilla        60       787       787/939     Atlantic        -4        N     Aguadilla              
+    8    93     Maricao           0       787       787/939     Atlantic        -4        N     Maricao                
+    9    11     Anasco         4840       787       787/939     Atlantic        -4        N     Anasco                 
+   10   141     Utuado            0       787       787/939     Atlantic        -4        N     Angeles                
+   11    13     Arecibo         470       787       787/939     Atlantic        -4        N     Arecibo                
+   12    13     Arecibo         470       787       787/939     Atlantic        -4        N     Arecibo                
+   13    13     Arecibo         470       787       787/939     Atlantic        -4        N     Arecibo                
+   14    13     Arecibo         470       787       787/939     Atlantic        -4        N     Bajadero               
+   15    17     Barceloneta    7440       787       787/939     Atlantic        -4        N     Barceloneta            
+   16    23     Cabo Rojo      4840       787       787/939     Atlantic        -4        N     Boqueron               
+   17    23     Cabo Rojo      4840       787       787/939     Atlantic        -4        N     Cabo Rojo              
+   18   111     Penuelas       6360       787       787/939     Atlantic        -4        N     Penuelas               
+   19    27     Camuy           470       787       787/939     Atlantic        -4        N     Camuy                  
+   20    81     Lares             0       787       787/939     Atlantic        -4        N     Castaner       Adjuntas
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Sample observations  --  showing first, last, and middle 20 records
+
+Records 1 - 20
+
+ 
+  Obs ALIAS_CITYN
+
+    1                                                                                                                                                                                  
+    2                                                                                                                                                                                  
+    3 Colinas Del Gigante||Jard de Adjuntas||Urb San Joaquin                                                                                                                           
+    4 Alts de Aguada||Bo Guaniquilla||Comunidad Las Flores||Ext Los Robles||Urb Isabel la Catolica                                                                                     
+    5 Bda Caban||Bda Esteves||Bo Borinquen||Bo Ceiba Baja||Ext El Prado||Ext Marbella||Repto Jimenez||Repto Juan Aguiar||Repto Lopez||Repto Tres Palmas||Sect Las Villas||Urb Borinquen
+    6                                                                                                                                                                                  
+    7                                                                                                                                                                                  
+    8                                                                                                                                                                                  
+    9 Brisas de Anasco||Est de Valle Verde||Jard de Anasco||Paseo Del Valle||Repto Daguey||Urb San Antonio                                                                             
+   10                                                                                                                                                                                  
+   11 Alt de Juncos||Alt de San Felipe||Bda Duhamel||Bo El Pasaje||Bo Islote||Bo Islote Ii||Bo Jarealitos||Bo Obrero||Bo Santana||Comunidad Buenos Aires||Est de Arecibo||Est de Balsei
+   12                                                                                                                                                                                  
+   13                                                                                                                                                                                  
+   14                                                                                                                                                                                  
+   15 Bda Catalana||Brisas de Llanadas||Brisas del Monte||Est de Barceloneta||Est de Florida||Ext Est De Imbery||Ext Parc Punta Palmas||Parc Garrochales||Parc Imbery||Parc Magueyes||P
+   16                                                                                                                                                                                  
+   17 Alts De Joyuda||Alts del Mar||Bo Ballaja||Bo Monte Grande||Est De Miramar||Est Reales||Ext Elizabeth||Ext La Concepcion||Ext Parc Elizabeth||Ext Sierra Linda||Haciendas De Belve
+   18 Alt de Penuelas II||Alts de Penuelas||Brisas de Guayanes||Colinas de Penuelas||Ext Alts de Penuelas II||Jard de Penuelas||Repto Kennedy||Sect Mal Paso||Urb El Madrigal||Urb Guay
+   19 Alts el Maestro||Sect Pena||Urb del Carmen||Urb Las Veredas||Urb Linda Vista||VISTAS de Camuy                                                                                    
+   20                                                                                                                                                                                  
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Sample observations  --  showing first, last, and middle 20 records
+
+Records 1 - 20
+
+ 
+  Obs CITY2          STATENAME2
+
+    1 HOLTSVILLE     NEWYORK   
+    2 HOLTSVILLE     NEWYORK   
+    3 ADJUNTAS       PUERTORICO
+    4 AGUADA         PUERTORICO
+    5 AGUADILLA      PUERTORICO
+    6 AGUADILLA      PUERTORICO
+    7 AGUADILLA      PUERTORICO
+    8 MARICAO        PUERTORICO
+    9 ANASCO         PUERTORICO
+   10 ANGELES        PUERTORICO
+   11 ARECIBO        PUERTORICO
+   12 ARECIBO        PUERTORICO
+   13 ARECIBO        PUERTORICO
+   14 BAJADERO       PUERTORICO
+   15 BARCELONETA    PUERTORICO
+   16 BOQUERON       PUERTORICO
+   17 CABOROJO       PUERTORICO
+   18 PENUELAS       PUERTORICO
+   19 CAMUY          PUERTORICO
+   20 CASTANER       PUERTORICO
+
+N = 20
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Sample observations  --  showing first, last, and middle 20 records
+
+Last 20 Records  --  41248 - 41267
+
+        fake_                 fake_      fake_        fake_                                                             ZIP_
+  Obs  onevalue       date  samevalue  allmissing  somemissing  fake_misswithconstant    ZIP            Y            X  CLASS  CITY             STATE  STATECODE  STATENAME  COUNTY
+
+41248     A      14DEC2124      23                    41248               A            99832    58.126780  -135.648668    P    Pelican            2       AK       Alaska      105 
+41249     A      15DEC2124      23                    41249               A            99833    56.806343  -132.969633    P    Petersburg         2       AK       Alaska      280 
+41250     A      16DEC2124      23                    41250               A            99835    57.061324  -135.339294         Sitka              2       AK       Alaska      220 
+41251     A      17DEC2124      23                    41251               A            99836    57.039187  -132.563950    P    Port Alexander     2       AK       Alaska      220 
+41252     A      18DEC2124      23                    41252               A            99840    59.566446  -135.328306    P    Skagway            2       AK       Alaska      230 
+41253     A      19DEC2124      23                    41253               A            99841    57.779884  -135.188839    P    Tenakee Springs    2       AK       Alaska      105 
+41254     A      20DEC2124      23                    41254               A            99850    58.475480  -134.156767    P    Juneau             2       AK       Alaska      110 
+41255     A      21DEC2124      23                    41255               A            99901    55.373751  -131.692560         Ketchikan          2       AK       Alaska      130 
+41256     A      22DEC2124      23                    41256               A            99903    55.740000  -132.250000    P    Meyers Chuck       2       AK       Alaska      130 
+41257     A      23DEC2124      23                    41257               A            99918    55.358140  -131.698840    P    Coffman Cove       2       AK       Alaska      198 
+41258     A      24DEC2124      23                    41258               A            99919    55.689470  -132.524280    P    Thorne Bay         2       AK       Alaska      198 
+41259     A      25DEC2124      23                    41259               A            99921    55.474111  -133.144582    P    Craig              2       AK       Alaska      198 
+41260     A      26DEC2124      23                    41260               A            99922    55.158425  -132.440454    P    Hydaburg           2       AK       Alaska      198 
+41261     A      27DEC2124      23                    41261               A            99923    55.963022  -130.392595    P    Hyder              2       AK       Alaska      198 
+41262     A      28DEC2124      23                    41262               A            99925    55.554962  -133.096707    P    Klawock            2       AK       Alaska      198 
+41263     A      29DEC2124      23                    41263               A            99926    55.130608  -131.490702    P    Metlakatla         2       AK       Alaska      198 
+41264     A      30DEC2124      23                    41264               A            99927    56.246711  -133.356548    P    Point Baker        2       AK       Alaska      198 
+41265     A      31DEC2124      23                    41265               A            99928    55.455705  -131.792537    P    Ward Cove          2       AK       Alaska      130 
+41266     A      01JAN2125      23                    41266               A            99929    56.467688  -132.384597    P    Wrangell           2       AK       Alaska      275 
+41267     A      02JAN2125      23                    41267               A            99950    55.340000  -131.640000    P    Ketchikan          2       AK       Alaska      130 
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Sample observations  --  showing first, last, and middle 20 records
+
+Last 20 Records  --  41248 - 41267
+
+                                                                                                                                                ALIAS_
+  Obs  COUNTYNM             MSA   AREACODE   AREACODES   TIMEZONE   GMTOFFSET   DST   PONAME            ALIAS_CITY                              CITYN    CITY2            STATENAME2
+
+41248  Hoonah-Angoon         0       907        907       Alaska        -9       Y    Pelican                                                            PELICAN            ALASKA  
+41249  Petersburg            0       907        907       Alaska        -9       Y    Petersburg        Kupreanof                                        PETERSBURG         ALASKA  
+41250  Sitka                 0       907        907       Alaska        -9       Y    Sitka                                                              SITKA              ALASKA  
+41251  Sitka                 0       907        907       Alaska        -9       Y    Port Alexander    Prt Alexander||Sitka                             PORTALEXANDER      ALASKA  
+41252  Skagway               0       907        907       Alaska        -9       Y    Skagway                                                            SKAGWAY            ALASKA  
+41253  Hoonah-Angoon         0       907        907       Alaska        -9       Y    Tenakee Springs   Tenakee Spgs                                     TENAKEESPRINGS     ALASKA  
+41254  Juneau                0       907        907       Alaska        -9       Y    Juneau                                                             JUNEAU             ALASKA  
+41255  Ketchikan Gateway     0       907        907       Alaska        -9       Y    Ketchikan         Edna Bay||Kasaan||Naukati Bay||Saxman            KETCHIKAN          ALASKA  
+41256  Ketchikan Gateway     0       907        907       Alaska        -9       Y    Meyers Chuck      Ketchikan                                        MEYERSCHUCK        ALASKA  
+41257  Prince Wales Hyder    0       907        907       Alaska        -9       Y    Coffman Cove      Ketchikan                                        COFFMANCOVE        ALASKA  
+41258  Prince Wales Hyder    0       907        907       Alaska        -9       Y    Thorne Bay        Ketchikan                                        THORNEBAY          ALASKA  
+41259  Prince Wales Hyder    0       907        907       Alaska        -9       Y    Craig                                                              CRAIG              ALASKA  
+41260  Prince Wales Hyder    0       907        907       Alaska        -9       Y    Hydaburg                                                           HYDABURG           ALASKA  
+41261  Prince Wales Hyder    0       907        907       Alaska        -9       Y    Hyder                                                              HYDER              ALASKA  
+41262  Prince Wales Hyder    0       907        907       Alaska        -9       Y    Klawock                                                            KLAWOCK            ALASKA  
+41263  Prince Wales Hyder    0       907        907       Alaska        -9       Y    Metlakatla                                                         METLAKATLA         ALASKA  
+41264  Prince Wales Hyder    0       907        907       Alaska        -9       Y    Point Baker                                                        POINTBAKER         ALASKA  
+41265  Ketchikan Gateway     0       907        907       Alaska        -9       Y    Ward Cove                                                          WARDCOVE           ALASKA  
+41266  Wrangell              0       907        907       Alaska        -9       Y    Wrangell                                                           WRANGELL           ALASKA  
+41267  Ketchikan Gateway     0       907        907       Alaska        -9       Y    Ketchikan         Edna Bay||Kasaan                                 KETCHIKAN          ALASKA  
+
+N = 20
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Sample observations  --  showing first, last, and middle 20 records
+
+Middle 20 Records  --  20624 - 20643
+
+         fake_                     fake_        fake_          fake_                                                                       ZIP_
+  Obs   onevalue         date    samevalue    allmissing    somemissing    fake_misswithconstant      ZIP              Y              X    CLASS    CITY            STATE    STATECODE
+
+20624      A        26JUN2068        23                          .                                  48836      42.663825     -84.068992             Fowlerville       26        MI    
+20625      A        27JUN2068        23                          .                                  48837      42.741897     -84.743758             Grand Ledge       26        MI    
+20626      A        28JUN2068        23                          .                                  48838      43.190086     -85.247315             Greenville        26        MI    
+20627      A        29JUN2068        23                          .                                  48840      42.751765     -84.395613             Haslett           26        MI    
+20628      A        30JUN2068        23                          .                                  48841      43.100242     -84.227445             Henderson         26        MI    
+20629      A        01JUL2068        23                          .                                  48842      42.640455     -84.528731             Holt              26        MI    
+20630      A        02JUL2068        23                          .                                  48843      42.620869     -83.919104             Howell            26        MI    
+20631      A        03JUL2068        23                          .                                  48844      42.606977     -83.931981      P      Howell            26        MI    
+20632      A        04JUL2068        23                          .                                  48845      43.092877     -84.868158             Hubbardston       26        MI    
+20633      A        05JUL2068        23                          .                                  48846      42.985392     -85.064142             Ionia             26        MI    
+20634      A        06JUL2068        23                          .                                  48847      43.271092     -84.592337             Ithaca            26        MI    
+20635      A        07JUL2068        23                          .                                  48848      42.884521     -84.328333             Laingsburg        26        MI    
+20636      A        08JUL2068        23                          .                                  48849      42.804386     -85.139514             Lake Odessa       26        MI    
+20637      A        09JUL2068        23                          .                                  48850      43.426823     -85.249843             Lakeview          26        MI    
+20638      A        10JUL2068        23                          .                                  48851      42.956822     -84.943116             Lyons             26        MI    
+20639      A        11JUL2068        23                          .                                  48852      43.350739     -85.050680      P      McBrides          26        MI    
+20640      A        12JUL2068        23                          .                                  48853      43.102216     -84.688937      P      Maple Rapids      26        MI    
+20641      A        13JUL2068        23                          .                                  48854      42.584076     -84.437704             Mason             26        MI    
+20642      A        14JUL2068        23                          .                                  48855      42.620163     -83.917238             Howell            26        MI    
+20643      A        15JUL2068        23                          .                                  48856      43.198172     -84.737927             Middleton         26        MI    
+DATA VERIFICATION + VALIDATION FOR WORK.ZIPCODE
+zipcode
+Sample observations  --  showing first, last, and middle 20 records
+
+Middle 20 Records  --  20624 - 20643
+
+                                                                                                                              ALIAS_     ALIAS_
+  Obs   STATENAME    COUNTY    COUNTYNM       MSA    AREACODE    AREACODES    TIMEZONE    GMTOFFSET    DST    PONAME           CITY      CITYN     CITY2          STATENAME2
+
+20624   Michigan        93     Livingston     440       517         517       Eastern         -5        Y     Fowlerville                          FOWLERVILLE     MICHIGAN 
+20625   Michigan        45     Eaton         4040       517         517       Eastern         -5        Y     Grand Ledge                          GRANDLEDGE      MICHIGAN 
+20626   Michigan       117     Montcalm         0       231         231       Eastern         -5        Y     Greenville                           GREENVILLE      MICHIGAN 
+20627   Michigan        65     Ingham        4040       517         517       Eastern         -5        Y     Haslett                              HASLETT         MICHIGAN 
+20628   Michigan       155     Shiawassee       0       989         989       Eastern         -5        Y     Henderson       Owosso               HENDERSON       MICHIGAN 
+20629   Michigan        65     Ingham        4040       517         517       Eastern         -5        Y     Holt                                 HOLT            MICHIGAN 
+20630   Michigan        93     Livingston     440       517         517       Eastern         -5        Y     Howell                               HOWELL          MICHIGAN 
+20631   Michigan        93     Livingston     440       517         517       Eastern         -5        Y     Howell                               HOWELL          MICHIGAN 
+20632   Michigan        67     Ionia            0       989         989       Eastern         -5        Y     Hubbardston                          HUBBARDSTON     MICHIGAN 
+20633   Michigan        67     Ionia            0       616         616       Eastern         -5        Y     Ionia                                IONIA           MICHIGAN 
+20634   Michigan        57     Gratiot          0       989         989       Eastern         -5        Y     Ithaca                               ITHACA          MICHIGAN 
+20635   Michigan       155     Shiawassee       0       517         517       Eastern         -5        Y     Laingsburg                           LAINGSBURG      MICHIGAN 
+20636   Michigan        67     Ionia            0       616         616       Eastern         -5        Y     Lake Odessa                          LAKEODESSA      MICHIGAN 
+20637   Michigan       117     Montcalm         0       989         989       Eastern         -5        Y     Lakeview                             LAKEVIEW        MICHIGAN 
+20638   Michigan        67     Ionia            0       989         989       Eastern         -5        Y     Lyons                                LYONS           MICHIGAN 
+20639   Michigan       117     Montcalm         0       989         989       Eastern         -5        Y     McBrides        McBride              MCBRIDES        MICHIGAN 
+20640   Michigan        37     Clinton       4040       989         989       Eastern         -5        Y     Maple Rapids                         MAPLERAPIDS     MICHIGAN 
+20641   Michigan        65     Ingham        4040       517         517       Eastern         -5        Y     Mason                                MASON           MICHIGAN 
+20642   Michigan        93     Livingston     440       517         517       Eastern         -5        Y     Howell                               HOWELL          MICHIGAN 
+20643   Michigan        57     Gratiot          0       989         989       Eastern         -5        Y     Middleton                            MIDDLETON       MICHIGAN 
+
+N = 20
