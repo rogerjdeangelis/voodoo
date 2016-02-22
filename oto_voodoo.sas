@@ -1,5 +1,6 @@
 /*
 %let pgm=oto_voodoo;
+
 * use this to get locations of macros for easy editiong;
 * once program is solid you may want to move macros to autocall library;
 data _null_;
@@ -4535,15 +4536,26 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
       sortby=descending percent,
       BY=,           /* list of blank-separated BY variables         */
       COLLAPSE=NO,
-      out=misspat    /* name of output dataset */
+      out=_vvmispat    /* name of output dataset */
       );
 
     /*
       %let lib=work;
-      %let data=zipcode;
-      %let out=misspat;
+      %let dat=zipcode;
+      %let out=_vvmispat;
     */
     * remove all the labels;
+
+    proc datasets nolist;
+      delete _vvcop;
+    ;run;quit;
+
+    data _vvcop;
+       set &dat;
+    ;run;quit;
+
+    %let dat=_vvcop;
+    %let lib=work;
 
     proc datasets lib=&lib nolist;
        modify &dat;
@@ -4553,20 +4565,24 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
     * labels = variable names;
     data _null_;
       set &lib..&dat (obs=1);
-      cmd="proc datasets lib=&lib nolist;modify &dat; label";
-      call execute(cmd);
-      putlog cmd;
     /* Array of all character variables */
     array temp1 (*) _character_;
 
     /* Array of all numeric variables */
     array temp2 (*) _numeric_;
 
+      cmd="proc datasets lib=&lib nolist;modify &dat; label";
+      call execute(cmd);
+      putlog cmd;
+
       /* For each element in the character array, assign its label */
       /* as the value of NEWLABEL, and output the observation      */
+
+      len=dim(temp1);
+      putlog len=;
       do i=1 to dim(temp1);
-        lbl=vlabel(temp2[i]);
-        nam=vname(temp2[i]);
+        lbl=vlabel(temp1[i]);
+        nam=vname(temp1[i]);
         cmd=cats(lbl,'="',nam,'"');
         call execute(cmd);
         putlog cmd=;
@@ -4574,6 +4590,8 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
 
       /* For each element of the numeric array, assign its label as */
       /* the value of NEWLABEL, and output the observation          */
+      len=dim(temp2);
+      putlog len=;
       do j=1 to dim(temp2);
         lbl=vlabel(temp2[j]);
         nam=vname(temp2[j]);
@@ -4899,27 +4917,23 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
       * switch variable names and labels;
     data _null_;
       set &out (obs=1);
-      cmd="proc datasets lib=work;modify &out; rename";
-      call execute(cmd);
-      putlog cmd;
-    /* Array of all character variables */
-    array temp1 (*) _character_;
+    *array temp1 (*) _character_;
 
     /* Array of all numeric variables */
     array temp2 (*) _numeric_;
 
-      /* For each element in the character array, assign its label */
-      /* as the value of NEWLABEL, and output the observation      */
+      cmd="proc datasets lib=work nolist;modify &out; rename";
+      call execute(cmd);
+      putlog cmd;
+    /* Array of all character variables
       do i=1 to dim(temp1);
-        lbl=vlabel(temp2[i]);
-        nam=vname(temp2[i]);
+        lbl=vlabel(temp1[i]);
+        nam=vname(temp1[i]);
         cmd=cats(nam,'=',lbl);
         if not (upcase(strip(nam)) eq upcase(strip(lbl)) or lbl=' ') then call execute(cmd);
         putlog cmd=;
       end;
-
-      /* For each element of the numeric array, assign its label as */
-      /* the value of NEWLABEL, and output the observation          */
+     */
       do j=1 to dim(temp2);
         lbl=vlabel(temp2[j]);
         nam=vname(temp2[j]);
@@ -4935,7 +4949,10 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
     ;run;quit;
     *-- Clear title statements;
     title3; run;
+
 %MEND _vdo_mispat;
+
+
 
 
 /*
@@ -4965,9 +4982,7 @@ OPTIONS NOMPRINT;
 OPTIONS MPRINT;
  %MISS_PAT(DS=sashelp.zipcode,by=statecode,collapse=yes)
 OPTIONS NOMPRINT;
-*/
 
-/*
 * add a date;
 data zipcode;
   retain fake_onevalue "A" date 0 fake_samevalue 23 fake_allmissing ''  fake_somemissing . fake_misswithconstant '';
@@ -5385,11 +5400,11 @@ run;quit;
 %mend utlvdoc;
 
 
-proc datasets kill;
+proc datasets kill nolist;
 run;quit;
 
 
-%utlopts;
+%utlnopts;
 
 * add a date;
 data zipcode;
@@ -5402,7 +5417,7 @@ data zipcode;
 run;quit;
 
 
-%utlvdoc
+%*utlvdoc
     (
     libname        = work      /* libname of input dataset */
 
@@ -5447,7 +5462,7 @@ run;quit;
     );
 
 
-%*utlvdoc
+%utlvdoc
     (
     libname        = work      /* libname of input dataset */
 
