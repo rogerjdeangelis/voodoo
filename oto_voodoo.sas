@@ -1,6 +1,5 @@
 /*
 %let pgm=oto_voodoo;
-
 * use this to get locations of macros for easy editiong;
 * once program is solid you may want to move macros to autocall library;
 data _null_;
@@ -11,88 +10,39 @@ if index(lowcase(_infile_),'%macro')>0 then do;
  put @5 _n_ @15 macro $32.;
 end;
 run;quit;
-
-
-What this macro does
-
-see the tail of this program for same usage
-You should be able to run this as is.
-
-The macro invocation is at the end of this file
-
-1.   Dataset level summary -- ie number of obs, variable types, static data
-2.   Cardinality page  (primary keys, codes/decodes  number of unique
-     values for every variable - EG fails here)
-3.   Complete frequency for all variables numeric and character with less
-     than 200 levels
-4.   For variables with over 200 levels top 100 most frequent and bottom
-     100 least frequent
-     Least frequent are the more interesting cases.
-5.   Proc means on all numeric variables
-6.   Proc univariate on all numeric variables
-7.   Special datetime  analysis
-9.   Histograms on all variables with less than 200 levels
-10.  Proc contents
-11.  Frequency of all numeric variables Missing, negative, zero and positive
-12.  Duplicates on single or compound key. Output printed vertically for
-     easy comparison
-13.  Cross tabs of every variable with every other variable top 16 levels
-     (if selectd)
-14.  You can also select one variable to cross tab with all other variables
-     max top 16 levels
-16.  Maximum and minimum lengths to hold all numeric and character variables
-     exactly (optimize)
-17.  Correlation of all pairs of numeric variables sorted by largest
-    correlation to lowest.
-18.  Nice display of max and mins for numeric and character in one table
-19.  List of identical columns ie date and date1 have equal values on all
-     observations
-19   One to Many, Many to One, One to Many and Many to Many
-20   Cochran-Mantel-Haenszel Statistics
-21   Finds missing patterns
-22   Printout of first 20, middle 20 and last 20 observations.
-
-
-for easy editing here are the locations macros
-prefix area helps
-
-also these macros do the analyses above
-
-   54        %macro utlnopts
-   90        %macro _vdo_macnam
-   106       %macro utlfkil
-   155       %macro nobs
-   196       %macro nvar
-   271       %macro _vdo_cdedec
-   303       %macro _vv_annxtb
-   415       %macro _vdo_basic
-   3056      %macro _vdo_optlen
-   3149      %macro _vdo_getmaxmin
-   3174      %macro _vdo_getmaxmin001;
-   3242      %macro _vdo_begmidend
-   3336      %macro _vdo_clean
-   3407      %macro _vdo_chartx
-   3611      %macro _vdo_mispop
-   3658      %macro _vdo_keyunq
-   3741      %macro _vdo_dupcol
-   3826      %macro _vdo_cor
-   3889      %macro _vdo_mnymny
-   3904      %macro _vdo_relhow
-   4027      %macro _vdo_cmh
-   4123      %macro _vdo_tabone
-   4188      %macro _vdo_taball
-   4268      %macro _vdo_unqtwo
-   4375      %macro qcmprltb
-   4401      %macro qblankta
-   4430      %macro qblanktc
-   4451      %macro qlastvar
-   4481      %macro _vdo_mispat
-   5031      %macro utl_getstm
-   5044      %macro DirExist
-   5056      %macro utlvdoc
 */
 
-
+/* for easy editing here are the locations macros
+prefix area helps
+ %macro utlnopts           56
+ %macro _vdo_macnam        93
+ %macro utlfkil            109
+ %macro nobs               158
+ %macro nvar               199
+ %macro _vdo_cdedec        274
+ %macro _vv_annxtb         306
+ %macro _vdo_basic         418
+ %macro _vdo_optlen        3051
+ %macro _vdo_getmaxmin     3144
+ %macro _vdo_getmaxmin001  3169
+ %macro _vdo_begmidend     3237
+ %macro _vdo_clean         3331
+ %macro _vdo_chartx        3402
+ %macro _vdo_mispop        3606
+ %macro _vdo_keyunq        3653
+ %macro _vdo_dupcol        3734
+ %macro _vdo_cor           3819
+ %macro _vdo_mnymny        3882
+ %macro _vdo_relhow        3897
+ %macro _vdo_cmh           4020
+ %macro _vdo_tabone        4116
+ %macro _vdo_taball        4181
+ %macro _vdo_unqtwo        4261
+ %macro utl_getstm         4463
+ %macro DirExist           4476
+ %macro utlvdoc            4488
+ %macro _vdo_unichr        4495
+*/
 
 *   *   ***    ***   ****    ***    ***
 *   *  *   *  *   *   *  *  *   *  *   *
@@ -137,45 +87,6 @@ OPTIONS
 RUN;quit;
 
 %MEND UTLNOPTS;
-
-
-%MACRO UTLOPTS
-         / des = "Turn all debugging options off forgiving options";
-
-OPTIONS
-
-   OBS=MAX
-   FIRSTOBS=1
-   lrecl=384
-   NOFMTERR      /* DO NOT FAIL ON MISSING FORMATS                              */
-   SOURCE      /* turn sas source statements on                               */
-   SOURCe2     /* turn sas source statements on                               */
-   MACROGEN    /* turn  MACROGENERATON ON                                     */
-   SYMBOLGEN   /* turn  SYMBOLGENERATION ON                                   */
-   NOTES       /* turn  NOTES ON                                              */
-   NOOVP       /* never overstike                                             */
-   CMDMAC      /* turn  CMDMAC command macros on                              */
-   /* ERRORS=2    turn  ERRORS=2  max of two errors                           */
-   MLOGIC      /* turn  MLOGIC    macro logic                                 */
-   MPRINT      /* turn  MPRINT    macro statements                            */
-   MRECALL     /* turn  MRECALL   always recall                               */
-   MERROR      /* turn  MERROR    show macro errors                           */
-   NOCENTER    /* turn  NOCENTER  I do not like centering                     */
-   DETAILS     /* turn  DETAILS   show details in dir window                  */
-   SERROR      /* turn  SERROR    show unresolved macro refs                  */
-   NONUMBER    /* turn  NONUMBER  do not number pages                         */
-   FULLSTIMER  /*   turn  FULLSTIMER  give me all space/time stats            */
-   NODATE      /* turn  NODATE      suppress date                             */
-   /*DSOPTIONS=NOTE2ERR                                                                              */
-   /*ERRORCHECK=STRICT /*  syntax-check mode when an error occurs in a LIBNAME or FILENAME statement */
-   DKRICOND=WARN      /*  variable is missing from input data during a DROP=, KEEP=, or RENAME=     */
-   DKROCOND=WARN      /*  variable is missing from output data during a DROP=, KEEP=, or RENAME=     */
-   /* NO$SYNTAXCHECK  be careful with this one */
- ;
-
-run;quit;
-
-%MEND UTLOPTS;
 
 %macro _vdo_macnam(macnam);
 
@@ -649,15 +560,11 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
 
     * ...UniPlot - change to false if illegal, with warning;
 
-    %let UniPlot = %lowcase( &UniPlot. );
-
-    /*
     %if &UniPlot. ne 0  %then
         %do;
         %put WARNING: (VV macro)  invalid UniPlot value &UniPlot. selected.  Using 'false' instead;
         %let UniPlot = false;
         %end;
-    */
 
     * ...Cleanup - change to false if illegal, with warning;
 
@@ -1981,7 +1888,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
 
         run;
 
-    %_vdo_macnam(CHARaFREQ);
+    %_vod_macnam(CHARaFREQ);
 
 
     *----------------------------------------------------------------------------------------
@@ -2418,6 +2325,8 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
 
         run;
 
+
+    %_vdo_macnam(DATETIME);
 
 
     *----------------------------------------------------------------------------------------
@@ -2986,10 +2895,11 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
         text= "run;";
         call execute( text );
 
+ run;
+
  %_vdo_macnam(UNIVAR);
 
-
-   %if &univar ne 0 %then %do;
+ %if &univar ne 0 %then %do;
 
     * moved univariate to here;
 
@@ -3052,10 +2962,8 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
         run;
 
 
+       data _null_;
 
-
-
-    data _null_;
         set
             _vvnum1(where= ( values gt 1 ))
             _vvnum2(where= ( values gt 1 ))  /* rjd 2/1/2015 */
@@ -3065,11 +2973,14 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
         by variable;
 
         if _n_ eq 1 then
-            do;
 
-            text = "ods exclude all;ods listing;proc univariate data= &libname..&data.";
+          do;
+
+            /*text = "ods exclude all;ods listing;proc univariate data= &libname..&data."; */
+            text = "proc univariate data= &libname..&data.";
+
             call execute( text );
-
+       /*
             if &UniPlot. ne 0 then
                 do;
 
@@ -3077,7 +2988,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
                 call execute ( text );
 
                 end;  * UniPlot processing;
-
+       */
 
             text = "; ";
             call execute( text );
@@ -3085,7 +2996,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
             text = "var ";
             call execute( text );
 
-            end;
+         end;
 
         call execute( variable );
 
@@ -3099,7 +3010,6 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
             call execute( text );
 
             end;
-
         run;
 
         * end univariate;
@@ -3220,7 +3130,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
    ;quit;
 
     title;footnote;
-    title1 ' ';title2 ' ';title3 ' ' ;
+    title1 'Â ';title2 'Â ';title3 'Â ' ;
     title4 "Maximum Number of Bytes to hold Character and Numeric Vales Exactly";
 
     proc print data=&out width=min;
@@ -3313,7 +3223,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
     run;
 
     title;footnote;
-    title1 ' ';title2 ' ';title3 ' ' ;
+    title1 'Â ';title2 'Â ';title3 'Â ' ;
     title4 "Maximums and Minimums %str(&lib.).%str(&mem.)";
     proc print data=&out noobs width=min uniform;
     var variable min max;
@@ -3614,7 +3524,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
     options ls=171;
 
          proc print data=_vv_h width=min label split='#' noobs;
-         title1 ' ';title2 ' ';title3 ' ' ;
+         title1 'Â ';title2 'Â ';title3 'Â ' ;
          title4 "Histogram for character variable &var";
           label batch="#";
           var batch;
@@ -3678,7 +3588,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
 
        proc print data=_vv_h9(where=(not (SCAN(batch,-4) = '0' or substr(batch,40)='')))  noobs label split='#';
 
-        title1 ' ';title2 ' ';title3 ' ';
+        title1 'Â ';title2 'Â ';title3 'Â ';
         title4 "Histogram for numeric variable &var";
         label batch="#";
         var batch;
@@ -3797,12 +3707,12 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
     ods listing;
 
     Proc Print data=_vdo_addkeyfix width=min;
-    title1 ' ';title2 ' ';title3 ' ' ;
+    title1 'Â ';title2 'Â ';title3 'Â ' ;
     title4 "Vertical List of Duplicates (&key -- &obsdup duplicates)";
     run;quit;
 
     Proc Print data=_vdo_dup width=min;
-    title1 ' ';title2 ' ';title3 ' ' ;
+    title1 'Â ';title2 'Â ';title3 'Â ' ;
     title4 "Horizontal List of Duplicates (&key -- &obsdup duplicates)";
     run;
 
@@ -3888,7 +3798,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
 
       %if &_vvcntstar ^= 0 %then %do;
          proc print data=_vveql;
-         title1 ' ';title2 ' ';title3 ' ' ;
+         title1 'Â ';title2 'Â ';title3 'Â ' ;
          title4 "These &typ variables have equal values for all observations";
          run;quit;
       %end;
@@ -3899,7 +3809,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
            put "Comparison of Numeric variables to see if a variable is duplicated exactly";
            put //;
            put "*** NO equal &typ Variables with All Equal Values found ***";
-           put ' ' //;
+           put 'Â ' //;
          run;
       %end;
 
@@ -3917,7 +3827,6 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
        lib=&libname
       ,mem=&data
       );
-
 
     data _vcor0th/view=_vcor0th;
       set %str(&lib).%str(&mem) (keep=_numeric_);
@@ -3938,7 +3847,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
     %put &=_vv_num;
 
     data _vvcor2nd;
-      keep var wth n val;
+      keep var wth n val p_rec;
       set _vvcor1st(drop=label );
       array num[*] _numeric_;
       do _i_=1 to &_vv_num;
@@ -3947,7 +3856,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
            wth=vname(num[_i_]);
            n=num[_i_+ %eval(2 * &_vv_num)];
            val=abs(num[_i_]);
-           if (_i_ < _n_  /*and index(variable,'_CD')=0 and index(wth,'_CD')=0 and n>299*/
+           if (_i_ < _n_
           and not (var='_REC' or wth = '_REC')) then output;
         end;
       end;
@@ -3957,15 +3866,19 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
     by descending val;
     run;
 
-    title "Variable Correlations";
+    title "Variable Correlations (Spearman)";
     proc print data=vv_corsrt(obs=100) noobs width=min label split='#';
     label
         var = "Variable"
         wth = "Correlated#With"
         val = "Correlation#Coef"
-        n   = "Number of Obs";
-    var var wth val n;
+        n   = "Number of Obs"
+        p_rec   = "Spearman P";
+    var var wth val n p_rec;
     run;
+    ods select all;
+
+
 %mend _vdo_cor;
 
 *   *  *   *  *   *  *   *  *   *  *   *
@@ -4095,7 +4008,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
 
     %end;
 
-    title1 ' ';title2 ' ';title3 ' ' ;
+    title1 'Â ';title2 'Â ';title3 'Â ' ;
     TITLE4 "Relationship OF VARIABLES WHERE MAX LEVELS IS &MAXVAL AND MAX NUMBER OF VARIABLES IS &MAXVAR";
     title5 "One to One  -- One to many  --  Many to One -- Many to Many ";
     proc print data=__basmnymny;
@@ -4185,7 +4098,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
     by descending value;
     run;quit;
 
-    title1 ' ';title2 ' ';title3 ' ' ;
+    title1 'Â ';title2 'Â ';title3 'Â ' ;
     TITLE4 "Cramer V";
     TITLE5 "ALL PAIRS OF VARIABLES WHERE MAX LEVELS IS &MAXVAL AND MAX NUMBER OF VARIABLES IS &MAXVAR";
     title6 "%scan(&vars.,&i) * %scan(&vars.,&j) ";
@@ -4246,7 +4159,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
     %do j=1 %to %eval(&nbs.);
 
          proc freq data=%str(&lib).%str(&mem.) noprint order=freq;
-            title1 ' ';title2 ' ';title3 ' ' ;
+            title1 'Â ';title2 'Â ';title3 'Â ' ;
             TITLE4 "TOP &TOP FOR &TAB WITH ALL OTHER VARIABLES WHERE MAX LEVELS IS &MAXVAL AND MAX NUMBER OF VARIABLES IS &MAXVAR";
             title5 " &tab with %scan(&vars.,&j) other variables ";
             tables %str(&tab) * %scan(&vars.,&j) / list nocol norow nopercent missing out=_vvx&j;
@@ -4322,7 +4235,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
          %if (&i ne &j)  %then %do;
 
            proc freq data=%str(&lib).%str(&mem.) noprint order=freq;
-              title1 ' ';title2 ' ';title3 ' ' ;
+              title1 'Â ';title2 'Â ';title3 'Â ' ;
               TITLE4 "TOP &TOP ALL PAIRS OF VARIABLES WHERE MAX LEVELS IS &MAXVAL AND MAX NUMBER OF VARIABLES IS &MAXVAR";
               title5 " %scan(&vars.,&i) * %scan(&vars.,&j) top &top frequent ";
               tables %scan(&vars.,&i) * %scan(&vars.,&j) / list nocol norow nopercent missing out=_vvx&i&j;
@@ -4462,581 +4375,6 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
       ,unqtwo=ZIP_CLASS STATECODE STATENAME
       );
 
-%macro qcmprltb(text);
-%*********************************************************************;
-%*                                                                   *;
-%*  MACRO: QCMPRLTB                                                  *;
-%*                                                                   *;
-%*  USAGE: 1) %qcmprltb(argument)                                    *;
-%*                                                                   *;
-%*  DESCRIPTION:                                                     *;
-%*    form with multiple blanks compressed to single blanks but with *;
-%*    with leading and trailing blanks retained, unlike %qcmpres.    *;
-%*                                                                   *;
-%*    Eg. %let macvar=%qcmprltb(&argtext)                            *;
-%*                                                                   *;
-%*  NOTES:                                                           *;
-%*    The %QLEFT macro in the autocall library is used in this macro.*;
-%*                                                                   *;
-%*********************************************************************;
-%local i;
-%let i=%index(&text,%str(  ));
-%do %while(&i^=0);
-  %let text=%qsubstr(&text,1,&i)%qleft(%qsubstr(&text,&i+1));
-  %let i=%index(&text,%str(  ));
-%end;
-&text
-%mend;
-
-%macro qblankta(text);
-%*********************************************************************;
-%*                                                                   *;
-%*  MACRO: QBLANKTA                                                  *;
-%*                                                                   *;
-%*  USAGE: 1) %qblankta(argument)                                    *;
-%*                                                                   *;
-%*  DESCRIPTION:                                                     *;
-%*    REPLACE BLANKS BY ASTERISKS:  MODELED AFTER QCMPRES FOUND IN   *;
-%*    !SASROOT\core\sasmacro.                                        *;
-%*                                                                   *;
-%*    Eg. %let macvar=%qblankta(&argtext)                            *;
-%*                                                                   *;
-%*  NOTES:                                                           *;
-%*                                                                   *;
-%*********************************************************************;
-%local i;
-%let i=%index(&text,%str( ));
-%do %while(&i^=0);
-  %IF &I GT 1 %THEN
-    %if &i lt %length(&text) %then
-    %let text=%qsubstr(&text,1,&i-1)%str(*)%qsubstr(&text,&i+1);
-    %else %let text=%qsubstr(&text,1,&i-1)%str(*);
-  %ELSE %let text=%str(*)%qsubstr(&text,&i+1);
-  %let i=%index(&text,%str( ));
-%end;
-&text
-%mend;
-
-%macro qblanktc(text) ;
-%*********************************************************************;
-%*                                                                   *;
-%*  MACRO: QBLANKTC                                                  *;
-%*                                                                   *;
-%*  USAGE: 1) %qblanktc(argument)                                    *;
-%*                                                                   *;
-%*  DESCRIPTION:                                                     *;
-%*    REPLACE BLANKS IN ARGUMENT BY COMMAS.                          *;
-%*                                                                   *;
-%*    Eg. %let macvar=%qblanktc(&argtext)                            *;
-%*                                                                   *;
-%*  NOTES:                                                           *;
-%*    USES %QSYSFUNC AND TRANSLATE FUNCTIONS TO ACCOMPLISH THE       *;
-%*    OBJECTIVE.                                                     *;
-%*                                                                   *;
-%*********************************************************************;
-
-  %if &text ne %then %qsysfunc(translate(&text,%str(,),%str( ))) ;
-%mend  qblanktc ;
-
-%macro qlastvar(text);
-%*********************************************************************;
-%*                                                                   *;
-%*  MACRO: QLASTVAR                                                  *;
-%*                                                                   *;
-%*  USAGE: 1) %qlastvar(argument)                                    *;
-%*                                                                   *;
-%*  DESCRIPTION:                                                     *;
-%*    Finds the last variable name in the argument, which consists   *;
-%*    of variable names delimited by blanks.  The name is returned   *;
-%*    without leading or trailing blanks.                            *;
-%*                                                                   *;
-%*    Eg. %let macvar=%qlastvar(&argtext)                            *;
-%*                                                                   *;
-%*  NOTES:                                                           *;
-%*    The %QCMPRES macro in the autocall library is used in this     *;
-%*    macro.                                                         *;
-%*                                                                   *;
-%*********************************************************************;
-%local i;
-%let text=%qcmpres(&text);
-%let i=%index(&text,%str( ));
-%do %while(&i^=0);
-  %let text=%qsubstr(&text,&i+1);
-  %let i=%index(&text,%str( ));
-%end;
-&text
-%mend;
-*END OF UTILITY MACROS;
-
-%macro _vdo_mispat(
-      dat=&data,   /* name of input dataset */
-      lib=&libname,
-      var=_ALL_,     /* allow selecting VAR=_NUMERIC_ or _CHARACTER_ */
-      sortby=descending percent,
-      BY=,           /* list of blank-separated BY variables         */
-      COLLAPSE=NO,
-      out=_vvmispat    /* name of output dataset */
-      );
-
-    /*
-      %let lib=work;
-      %let dat=zipcode;
-      %let out=_vvmispat;
-    */
-    * remove all the labels;
-
-    proc datasets nolist;
-      delete _vvcop;
-    ;run;quit;
-
-    data _vvcop;
-       set &dat;
-    ;run;quit;
-
-    %let dat=_vvcop;
-    %let lib=work;
-
-    proc datasets lib=&lib nolist;
-       modify &dat;
-       attrib _all_ label='';
-    ;run;quit;
-
-    * labels = variable names;
-    data _null_;
-      set &lib..&dat (obs=1);
-    /* Array of all character variables */
-    array temp1 (*) _character_;
-
-    /* Array of all numeric variables */
-    array temp2 (*) _numeric_;
-
-      cmd="proc datasets lib=&lib nolist;modify &dat; label";
-      call execute(cmd);
-      putlog cmd;
-
-      /* For each element in the character array, assign its label */
-      /* as the value of NEWLABEL, and output the observation      */
-
-      len=dim(temp1);
-      putlog len=;
-      do i=1 to dim(temp1);
-        lbl=vlabel(temp1[i]);
-        nam=vname(temp1[i]);
-        cmd=cats(lbl,'="',nam,'"');
-        call execute(cmd);
-        putlog cmd=;
-      end;
-
-      /* For each element of the numeric array, assign its label as */
-      /* the value of NEWLABEL, and output the observation          */
-      len=dim(temp2);
-      putlog len=;
-      do j=1 to dim(temp2);
-        lbl=vlabel(temp2[j]);
-        nam=vname(temp2[j]);
-        cmd=cats(lbl,'="',nam,'"');
-        call execute(cmd);
-        putlog cmd=;
-      end;
-      call execute(';run;quit;');
-    stop;
-    run;
-
-    /* make the labels = variable names */
-
-    * MISS_PAT.SAS VERSION 1.0
-    * THIS MACRO WILL RUN A MISSING PATTERN ANALYSIS ON THE DATA SET &dat;
-    * 'BY' VARIABLES CAN BE USED BY SPECIFYING &BY;
-    * If 'by' variables are specified and collapse=YES, then statistics
-      for missing patterns collapsed accross all 'by' variables are
-      also printed;
-    * All VAR= variables except the 'by' variable are used in the analysis;
-
-    * TITLES CREATED BY THIS MACRO ARE PUT IN TITLE3, and TITLE4 LINES;
-
-    %LOCAL SORTIN; * TO CONTROL DATA SET USE IN SORT BELOW, DEPENDING ON CIRCUMSTANCE;
-
-    %* Guarantee at least one trailing blanks at end of &by;
-    %* so as to be able to search the &by list for unique individual
-       substrings that do not contain blanks (i.e., search for the
-       individual 'by' variables;
-    %* Guarantee no more than one blank seperating variable names in &by;
-    %* so as to replace the blanks with asterisks for use in proc freq;
-    %* also guarantee that characters are upper case for comparisons later;
-    %LET BY=%UPCASE(%CMPRES(&BY))%STR( );
-    %PUT BY=&BY***;
-
-    * Determine the variables in the data set &dat using proc contents ;
-    proc contents data=&dat noprint
-      out=cont_ds(
-        keep=name varnum label type
-        rename=(name=variable)
-        label="Contents of &dat: Selected Variables"
-         );
-    run;
-
-    *proc print;
-
-    * Set up formats for the variable 'type' and for missingness;
-    proc format;
-      value typef
-        1='NUMERIC'
-        2='CHARACTER'
-            ;
-      value miss
-        0='X'
-        1='.'
-            ;
-    run;
-
-    %let var=%upcase(&var);
-
-    TITLE3 "Variable Name Aliases for &dat for Use in Mising Value Pattern Analysis";
-    * Note: the proc contents above sorted the data set by 'VARIABLE';
-    * If &VAR^=_ALL_, the variable aliases will be inconveniently labeled;
-    data aliases;
-      attrib alias length=$6;
-      format type typef.;
-      set cont_ds;
-      alias='V'||left(put(varnum,5.0));
-            *-- Subset by TYPE or variable name;
-            %if &var=_ALL_       %then %str(;);
-      %else %if &var=_NUMERIC_   %then %do;  if type=1; %end;
-      %else %if &var=_CHARACTER_ %then %do;  if type=2; %end;
-      %else %do;  if index("&var", upcase(trim(variable)));     %end;
-
-    run;
-
-    /*
-    TITLE4 "Sorted by VARIABLE";
-    proc print data=aliases;
-          id variable;
-          var alias label type;
-    run;
-    */
-
-    TITLE4 "Sorted by ALIAS";
-    proc sort data=aliases;
-    * note: sorting by alias leads to trouble when greater than 9 variables;
-      by varnum;
-    run;
-    /*
-    proc print data=aliases;
-          id alias;
-          var variable label type;
-    run;
-    */
-    * Create macro variables for 'rename' statement, etc. later;
-    * exclude variables in the &by list;
-    * create the macro variables in order sorted by varnum;
-    * also create a list of macro variables from the &by list;
-    %local aliases variables;
-    data _null_;
-      retain  bylist "&by"; * previously added a blank at the end to be
-                              able to delimit a string by a trailing blank;
-      set aliases end=eof;
-      retain aliases variables;
-      length aliases variables $200;
-      * Seperate processing if variable is in the &by list;
-       if not index(bylist,trim(upcase(variable))||' ')
-      then do;
-        nanalyze+1;
-          aliases = trim(aliases) || ' ' || trim(alias);
-          variables = trim(variables) || ' ' || trim(variable);
-        put 'Outputting macro variables for variable ' NANALYZE '(' variable ') -> ' alias;
-          %* &A1, &A2, etc. will contain the alias names;
-        call symput('A'||left(put(nanalyze,5.0)),trim(alias));
-          %* &VAR1, &VAR2, etc. will contain the variable names;
-        call symput ('VAR'||left(put(nanalyze,5.0)),variable);
-        %* &T1, &T2, etc. will contain the variable type;
-        call symput ('T'||left(put(nanalyze,5.0)),type);
-      end;
-      else do;
-        nbyvars+1;
-          put 'Outputting macro variable for BY variable ' NBYVARS '(' variable ')';
-        CALL SYMPUT ('BYVAR'||LEFT(PUT(NBYVARS,5.0)),VARIABLE);
-      end;
-      if eof then do;
-        call symput('nanalyze',nanalyze);
-          call symput('nbyvars',nbyvars);
-          call symput('aliases',aliases);
-          call symput('variables',variables);
-      end;
-    run;
-
-   /*
-    %put aliases = &aliases;
-    %put variables = &variables;
-   */
-
-    * Create a data set 'shortnam' with aliases substituted for variable
-      names, etc.;
-    DATA SHORTNAM;
-    * SET UP THE V1, ETC. AS ONE BYTE CHARACTER VARIABLES;
-      length &aliases $1;
-
-      * Set up mispat as character of length &nanalyze;
-      length mispat $ &nanalyze;
-      set &dat;
-      ;
-      * CREATE THE V1_MISS, ETC. VARIABLES, DEPENDING ON VARIABLE TYPE;
-      %DO I=1 %TO &NANALYZE;
-         ;
-         %IF &&T&I = 1 %THEN
-             %STR(* NUMERIC VARIABLE;)
-         %STR(IF &&VAR&I LE .Z THEN &&A&I='.'; ELSE &&A&I='X';);
-             %ELSE
-         %STR(* CHARACTER VARIABLE;)
-             %STR(IF &&VAR&I EQ ' ' THEN &&A&I='.'; ELSE &&A&I='X';);
-
-             * ITERATIVELY CONSTRUCT MISPAT;
-         %IF &I EQ 1 %THEN %STR(MISPAT=&&A&I;);
-             %ELSE %STR(MISPAT=TRIM(MISPAT)||&&A&I;);
-      %END;
-      ;
-      * TRANSLATE MISPAT TO A BINARY STRING;
-      MISPAT=TRANSLATE(MISPAT,'01','X.');
-      ;
-      * DROP UNNEEDED DATA;
-      DROP &variables;
-      /*
-      %DO I=1 %TO &NANALYZE;
-           &&VAR&I
-      %END;
-      */
-      ;
-    RUN;
-    *proc print data=shortnam(obs=20);
-
-
-    PROC FREQ DATA=SHORTNAM;
-      TABLE MISPAT%qblankta(%qtrim(%str( )%qcmpres(&by)))/OUT=BYMISPAT NOPRINT MISSING;
-    RUN;
-
-    * Add the group number to the observations;
-    data bymispa2;
-      set bymispat;
-      by mispat ;
-      if first.mispat then Group+1;
-      rename count=Freq;
-    run;
-
-
-    * Print the missing patterns if by groups not specified via &by, otherwise
-      print the ungrouped missing patterns if requested via &collapse;
-    %IF (%QTRIM(&BY) EQ ) OR ((%QTRIM(&BY) NE ) AND %UPCASE(&COLLAPSE) EQ YES)
-     %THEN %DO;
-
-       %IF %QTRIM(&BY) NE %THEN %DO;
-
-        * Summarize collapsing on &by variables ;
-        proc freq data=bymispa2;
-              table mispat/out=bymispa3 noprint missing;
-              weight freq;
-        run;
-
-        * Now read the group number to the observations;
-        data bymispa4;
-          set bymispa3;
-          by mispat ;
-          if first.mispat then Group+1;
-              rename count=Freq;
-        run;
-
-            %LET SORTIN=BYMISPA4;
-       %END;
-       %ELSE %LET SORTIN=BYMISPA2;
-
-
-        * Results to be printed without by variables;
-        * Translate mispat back into v1, v2, etc.;
-          *-- Use binary (0/1) variables rather than character and formats for printing as X or .;
-          *-- Provide variable name as label for Vi in output dataset;
-          *-- Delete OBS variable;
-        DATA &out;
-          set &sortin;
-    *      obs+1;
-          drop mispat;
-    *        misbin = mispat;  *-- save binary pattern (for testing);
-
-                %do i=1 %to &nanalyze;
-                      &&A&i = (substr(mispat,&i,1) = '1');
-                      format &&A&i miss.;
-                      label  &&A&i = "&&var&i";
-                      %end;
-          nmiss = sum(of &aliases);      *-- number of missing variables;
-
-          LABEL Group='Group'
-                Freq='Freq'
-                Percent='Percent'
-                      nmiss = 'missing';
-          FORMAT PERCENT 5.1;
-    *      LABEL OBS='Obs';
-        RUN;
-
-        * Next sort the results by percent descending;
-        proc sort data=&out;
-              by &sortby;
-            run;
-      /*
-        PROC PRINT DATA=&out
-        TITLE4 "Missing data patterns: sorted by &sortby";
-          VAR &aliases
-             group freq percent;
-        RUN;
-      */
-    %END;
-
-    * If appropriate do computations then print grouped (by &by) missing
-      patterns ;
-    %IF &BY NE %STR( ) %THEN %DO;
-          proc sql;
-          create table work.groupct as
-          select mispat %qblanktc(%qtrim(%str( )%qcmpres(&by))),freq,group,
-                 sum(freq) as bytot,
-                 100*freq/sum(freq) as percent
-                   from bymispa2
-                   group by %qblanktc(%qcmpres(&by))
-                   order by %qblanktc(%qcmpres(&by)),percent desc,group
-              ;
-          quit;
-
-    * TRANSLATE MISPAT BACK INTO V1, V2, ETC.;
-    DATA &out;
-    /*
-    * SET UP THE V1, ETC. AS ONE BYTE CHARACTER VARIABLES;
-      LENGTH
-      %DO I=1 %TO &NANALYZE;
-          &&A&I
-      %END;
-      $ 1;
-    */
-
-      SET GROUPCT(DROP=BYTOT);
-     %IF &BY NE %STR( ) %THEN %STR(
-      BY &BY ;
-      IF FIRST.%QLASTVAR(&BY)THEN OBS=0 ;
-    );
-      OBS+1;
-                %do i=1 %to &nanalyze;
-                      &&A&i = (substr(mispat,&i,1) = '1');
-                      format &&A&i miss.;
-                      label  &&A&i = "&&var&i";
-                      %end;
-    *  DROP MISPAT;
-       * TRANSLATE BACK FROM BINARY STRING;
-     /*
-      MISPAT=TRANSLATE(MISPAT,'X.','01');
-      %DO I=1 %TO &NANALYZE;
-      &&A&I=SUBSTR(MISPAT,&I,1);
-      %END;
-     */
-      LABEL GROUP='Group';
-      LABEL FREQ='Freq';
-      LABEL PERCENT='Percent';
-      FORMAT PERCENT 5.1;
-      LABEL OBS='ByObs';
-    RUN;
-  /*
-    PROC PRINT DATA=&out LABEL ;
-      %IF &BY NE %STR( ) %THEN %DO;
-        %STR(    BY &BY ;);
-        %DO I=1 %TO &NBYVARS;
-            *Suppress the label so by variable names, rather than labels, are printed;
-            LABEL &&BYVAR&I..=' ';
-        %END;
-      %END;
-      TITLE4 'Missing Data Patterns: Sorted By Descending Percent';
-      VAR &aliases
-         GROUP FREQ PERCENT;
-    RUN;
-   */
-    %END;
-
-      * switch variable names and labels;
-    data _null_;
-      set &out (obs=1);
-    *array temp1 (*) _character_;
-
-    /* Array of all numeric variables */
-    array temp2 (*) _numeric_;
-
-      cmd="proc datasets lib=work nolist;modify &out; rename";
-      call execute(cmd);
-      putlog cmd;
-    /* Array of all character variables
-      do i=1 to dim(temp1);
-        lbl=vlabel(temp1[i]);
-        nam=vname(temp1[i]);
-        cmd=cats(nam,'=',lbl);
-        if not (upcase(strip(nam)) eq upcase(strip(lbl)) or lbl=' ') then call execute(cmd);
-        putlog cmd=;
-      end;
-     */
-      do j=1 to dim(temp2);
-        lbl=vlabel(temp2[j]);
-        nam=vname(temp2[j]);
-        cmd=cats(nam,'=',lbl);
-        if not (upcase(strip(nam)) eq upcase(strip(lbl)) or lbl=' ') then call execute(cmd);
-        putlog cmd=;
-      end;
-      call execute(';run;quit;');
-    stop;
-    run;
-
-    proc print data=&out width=min;
-    ;run;quit;
-    *-- Clear title statements;
-    title3; run;
-
-%MEND _vdo_mispat;
-
-
-
-
-/*
-* TWOVARS.SAS REVISED 3-JUL-03;
-* DATA FOR EXAMPLE IN NESUG 16 MISS_PAT PAPER;
-DATA TWOVARS;
-INPUT Variab01 1 Second_Var $ 3-5;
-LABEL Variab01='VARIABLE NUMBER 1';
-LABEL Second_Var='VARIABLE NUMBER 2';
-cards;
-2
-1 ABC
-1
-1
-2 DEF
-2
-1
-1 GHI
-;
-PROC PRINT DATA=TWOVARS;
-TITLE 'TWOVARS';
-RUN;
-* Examples of calls to MISS_PAT;
-OPTIONS MPRINT;
- %MISSPAT(DATA=WORK.TWOVARS);;run;quit;
-OPTIONS NOMPRINT;
-OPTIONS MPRINT;
- %MISS_PAT(DS=sashelp.zipcode,by=statecode,collapse=yes)
-OPTIONS NOMPRINT;
-
-* add a date;
-data zipcode;
-  retain fake_onevalue "A" date 0 fake_samevalue 23 fake_allmissing ''  fake_somemissing . fake_misswithconstant '';
-  format date date9.;
-  set sashelp.zipcode(where=(
-      fipstate(state) not in ('AK' 'FM' 'GU' 'MH' 'MP' 'PR' 'PW' 'VI')));
-  date=_n_+ 19000;
-  if _n_>22000 then fake_somemissing=_n_;
-  if _n_>40000 then fake_misswithconstant='A';
-run;quit;
-*/
-
-%*_vdo_mispat(lib=work,dat=zipcode);
-
-
 *****  *   *  ****
 *      **  *   *  *
 *      * * *   *  *
@@ -5048,8 +4386,8 @@ run;quit;
 proc datasets kill nolist ;
 run;quit;
 
+
 /*
-* another example
 
 options fullstimer;run;
 data tstdat (compress=binary);
@@ -5129,10 +4467,8 @@ run;quit;
      observations
 19   One to Many, Many to One, One to Many and Many to Many
 20   Cochran-Mantel-Haenszel Statistics
-21   Finds missing patterns
-22   Printout of first 20, middle 20 and last 20 observations.
+20   Printout of first 20, middle 20 and last 20 observations.
 */
-
 
 %macro utl_getstm(pth);
    %local revstr cutstr gotstm;
@@ -5159,6 +4495,673 @@ run;quit;
   &return
 %mend DirExist;
 
+
+
+%MACRO _vdo_UNICHR
+     (
+      UTITLE=PROC UNIVARIATE ON CHAR VARIABLES
+      ,UOBJ=UTLMMCH
+    )
+    /DES = "PROC MEANS ON CHAR VARIABLES";
+
+ %let uin=&libname..&data;
+
+ %put %sysfunc(ifc(%sysevalf(%superq(uin)=,boolean),**** Please Provide SAS dataset ****,));
+ %if %sysfunc(ifc(%sysevalf(%superq(uin)=,boolean),1,0)) eq 0 %then %do;
+
+  /*------------------------------------------------------------*\
+  |                                                              |
+  |    TABLE DESCRIPTION---   Fictitious Shoe Company Data       |
+  |    TABLE NAME----------   sashelp.shoes                      |
+  |                                                              |
+  |    ROWS----------------   395                                |
+  |                                                              |
+  |    VARIABLE NAME-------   SUBSIDIARY                         |
+  |    COLUMN LABEL--------                                      |
+  |                                                              |
+  |    FIELD LENGTH--------   12                                 |
+  |    COLUMN NUMBER-------   3                                  |
+  |                                                              |
+  |    NUMBER BLANKS-------   0                                  |
+  |    NUMBER NON BLANK----   395                                |
+  |                                                              |
+  |    LOWEST VALUE--------   Addis Ababa                        |
+  |    HIGHEST VALUE-------   Warsaw                             |
+  |                                                              |
+  |    SHORTEST LENGTH-----   4                                  |
+  |    LONGEST LENGTH------   12                                 |
+  |                                                              |
+  |    RANGE---------------   Addis Ababa - Warsaw               |
+  |                                                              |
+  |    INTERQTILE LTR RANGE   C  - P                             |
+  |                                                              |
+  |    INTERQTILE RANGE----   Copenhagen - Paris                 |
+  |                                                              |
+  |    MODE LETTER---------   M  61                              |
+  |                                                              |
+  |    MEDIAN--------------   Los Angeles                        |
+  |                                                              |
+  |    MODE----------------   Addis Ababa  8                     |
+  |                                                              |
+  |    COVERAGE % ALPHA-NUM   48                                 |
+  |                                                              |
+  |    EACH * REPRESENTS---   1  OCCURANCES                      |
+  |                                                              |
+  |    A  ! *******************************                      |
+  |    B  ! *****************************                        |
+  |    C  ! ***********************************************      |
+  |    D  ! *********                                            |
+  |    G  ! *********                                            |
+  |    H  ! *********                                            |
+  |    J  ! **************                                       |
+  |    K  ! ********************************                     |
+  |    L  ! ****************************************             |
+  |    M  ! *****************************************************|
+  |    N  ! ***************                                      |
+  |    O  ! ********                                             |
+  |    P  ! *****************                                    |
+  |    R  ! *********                                            |
+  |    S  ! **********************************************       |
+  |    T  ! ******************                                   |
+  |    V  ! *********                                            |
+  \*------------------------------------------------------------*/
+
+%LOCAL
+         UIN
+         RC
+         UI
+         UDSID
+         UOBS
+         UVARS
+         ULBL
+         VARNAM
+         VARTYPE
+         VARLABEL
+         VARLEN
+         QTR1ST
+         QTR3RD
+         MEDIAN
+         MODE
+         MODECNT
+         UVARNAM
+         UVARTYP
+         UVARLBL
+         UVARLEN
+         Qtr1st
+         Qtr3rd
+         median
+         mode
+         codecnt
+;
+
+
+PROC DATASETS
+               LIBRARY=work
+               NOLIST
+;
+DELETE utlmmch:;
+QUIT;
+
+
+
+/*-------------------------------------*\
+! CREATE TEMPLATE FOR APPEND            !
+\*-------------------------------------*/
+
+PROC SQL;
+
+    CREATE
+           TABLE
+                  UTLMMCH1
+           (
+            TYPE=DATA            LABEL="METADATA &UIN."         ,
+            NAME      CHAR(32)    LABEL="VARIABLE NAME"                    ,
+            LABEL     CHAR(200)  LABEL="VARIABLE DESCRIPTION"             ,
+            LENGTH    CHAR(8)   LABEL="VARIABLE LENGTH BYTES"            ,
+            COLNUM    INT        LABEL="COLUMN NUMBER"                    ,
+            NBLANK    INT        LABEL='NUMBER OF BLANK OBSERVATIONS'     ,
+            NNONBL    INT        LABEL='NUMBER OF NON-BLANK OBSERVATIONS' ,
+            LOWVAL    CHAR(200)  LABEL='LOWEST NON-BLANK VALUE'           ,
+            HIGHVAL   CHAR(200)  LABEL='HIGHEST VALUE'                    ,
+            SHORTEST  INT        LABEL='SHORTEST LENGTH'                  ,
+            LONGEST   INT        LABEL='LONGEST LENGTH'
+           )
+    ;
+QUIT;
+
+%LET UDSID = %SYSFUNC( OPEN ( &uin., I ) );
+
+    /*-------------------------------------*\
+    ! GET THE NUMBER OF COLUMNS FOR LOOP    !
+    \*-------------------------------------*/
+
+    %LET UOBS = %SYSFUNC(ATTRN(&UDSID,NLOBS));
+
+    %LET UVARS = %SYSFUNC(ATTRN(&UDSID,NVARS));
+
+    %LET ULBL = %SYSFUNC(ATTRC(&UDSID,LABEL));
+
+    %LET UMAX = 0;
+
+    %DO UI = 1 %TO &UVARS;
+
+       /*-------------------------------------*\
+       !  GET ATTRIBUTES                       !
+       \*-------------------------------------*/
+
+       %LET UVARNAM = %SYSFUNC ( VARNAME  ( &UDSID, &UI  ) );
+       %LET UVARTYP = %SYSFUNC ( VARTYPE  ( &UDSID, &UI  ) );
+       %LET UVARLBL = %SYSFUNC ( VARLABEL ( &UDSID, &UI  ) );
+       %LET UVARLEN = %SYSFUNC ( VARLEN   ( &UDSID, &UI  ) );
+
+       %IF &UVARTYP EQ %QUPCASE(C) %THEN %DO;
+
+          %IF &UVARLEN GT &UMAX %THEN %LET UMAX = &UVARLEN;
+
+       *      *****  ****           ***   *   *  *****   ***
+       *        *    *   *         *   *  **  *    *    *   *
+       *        *    *   *         *      * * *    *     *
+       *        *    ****          *      *  **    *      *
+       *        *    * *           *      *   *    *       *
+       *        *    *  *          *   *  *   *    *    *   *
+       *****    *    *   *          ***   *   *    *     ***
+
+       ****   *****  *****  *      *****   ***
+       *   *    *      *    *      *      *   *
+       *   *    *      *    *      *       *
+       ****     *      *    *      ****     *
+       *        *      *    *      *         *
+       *        *      *    *      *      *   *
+       *        *    *****  *****  *****   ***
+
+       #! PTILES ;
+
+
+        /*
+         %let libname        = work   ;
+         %let data          = zipcode ;
+
+         %let uin=&libname..&data;
+
+         %let uvarnam=state;
+         %let uobs=41267;
+
+        */
+
+
+       proc sort data=&uin (keep=&uvarnam)  out=utlmmch5;
+         by &uvarnam;
+       run;quit;
+
+       data _null_;
+
+           qtr1st=round(&uobs/4);
+           set utlmmch5 point=qtr1st;
+           call symputx('QTR1ST',&uvarnam);
+           put &uvarnam =;
+
+           qtr3rd=round(&uobs - &uobs/4);
+           set utlmmch5 point=qtr3rd;
+           call symputx('QTR3RD',&uvarnam);
+           put &uvarnam =;
+
+           median=round(&uobs/2);
+           set utlmmch5 point=median;
+           call symputx('MEDIAN',&uvarnam);
+           put &uvarnam =;
+
+           stop;
+
+       run;quit;
+
+       proc sql noprint;
+         select count(distinct &uvarnam ) into :UNQS separated by '' from &uin
+       ;quit;
+
+       %put &=unqs;
+
+       proc freq data=utlmmch5 noprint order=freq;
+       tables &uvarnam/ out=utlmmch6;
+       ;run;quit;
+
+       data _null_;
+          set utlmmch6(obs=1);
+          call symputx('MODE',&uvarnam.);
+          call symputx('MODECNT',put(count,8.));
+       run;
+
+       %put
+           &=QTR1ST
+           &=QTR3RD
+           &=MEDIAN
+           &=MODE
+           &=MODECNT;
+
+              DATA
+                 UTLMMCH0
+                  (
+                   LABEL="EXTRACT SUMMARY STATS MAX MIN"
+
+                   KEEP =
+                          NAME
+                          LABEL
+                          LENGTH
+                          COLNUM
+                          NBLANK
+                          NNONBL
+                          LOWVAL
+                          HIGHVAL
+                          SHORTEST
+                          LONGEST
+                          QTR1ST
+                          QTR3RD
+                          MEDIAN
+                          MODE
+                          MODECNT
+                          UNIQUES
+                          _A
+                          _B
+                          _C
+                          _D
+                          _E
+                          _F
+                          _G
+                          _H
+                          _I
+                          _J
+                          _K
+                          _L
+                          _M
+                          _N
+                          _O
+                          _P
+                          _Q
+                          _R
+                          _S
+                          _T
+                          _U
+                          _V
+                          _W
+                          _X
+                          _Y
+                          _Z
+                          _0
+                          _1
+                          _2
+                          _3
+                          _4
+                          _5
+                          _6
+                          _7
+                          _8
+                          _9
+                          __
+
+                  );
+
+
+                SET
+                     &uin.
+                     (
+                      KEEP = &UVARNAM
+                     )
+                     END = DONE
+                ;
+
+                ATTRIB
+
+                    NAME     LABEL='VARIABLE NAME               ' LENGTH=$32
+                    LABEL    LABEL='VARIABLE LABEL              ' LENGTH=$200
+                    LENGTH   LABEL='VARIABLE LENGTH             '
+
+                    NBLANK   LABEL='NUMBER OF BLANK OBSERVATIONS'  length=8
+
+                    NNONBL   LABEL='NUMBER OF NON-BLANK OBSERVATIONS' length=8
+
+                    LOWVAL   LABEL='LOWEST NON-BLANK VALUE'
+                             LENGTH=$&UVARLEN
+
+                    HIGHVAL  LABEL='HIGHEST VALUE'
+                             LENGTH=$&UVARLEN
+
+                    SHORTEST LABEL='SHORTEST LENGTH'   length=8
+
+                    LONGEST  LABEL='LONGEST LENGTH'    length=8
+            ;
+
+            length
+                QTR1ST  $44
+                QTR3RD  $44
+                MEDIAN  $44
+                MODE    $44
+                MODECNT $12
+            ;
+
+
+             RETAIN
+
+                    NBLANK
+                    NNONBL
+                    SHORTEST
+                    LONGEST     0
+                    LOWVAL
+                    HIGHVAL
+
+               ;
+
+
+               LENGTH
+                       CHAR    $1
+                       NAME    $8
+            ;
+
+               RETAIN           _A _B _C _D _E _F _G _H _I _J _K _L _M _N _O _P
+                                _Q _R _S _T _U _V _W _X _Y _Z _0 _1 _2 _3 _4 _5 _6 _7 _8 _9 __ 0;
+
+               ARRAY OUTVAR {*} _A _B _C _D _E _F _G _H _I _J _K _L _M _N _O _P
+                                _Q _R _S _T _U _V _W _X _Y _Z _0 _1 _2 _3 _4 _5 _6 _7 _8 _9 __;
+
+
+               RETAIN POSITION 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+               IF &UVARNAM NE ' ' THEN NNONBL = NNONBL + 1;
+               ELSE                    NBLANK = NBLANK + 1;
+
+               IF _N_ EQ 1 THEN DO;
+
+                    LOWVAL   = PUT(&UVARNAM,$&UVARLEN..);
+                    HIGHVAL  = PUT(&UVARNAM,$&UVARLEN..);
+
+                    SHORTEST = LENGTH(&UVARNAM );
+                    LONGEST  = LENGTH(&UVARNAM );
+
+               END;
+               ELSE DO;
+
+                   IF &UVARNAM NE ' ' AND
+                      LOWVAL   GT     PUT(&UVARNAM,$&UVARLEN..)
+                               THEN   LOWVAL = PUT(&UVARNAM,$&UVARLEN..);
+
+                   IF HIGHVAL LT PUT(&UVARNAM,$&UVARLEN..)
+                              THEN HIGHVAL= PUT(&UVARNAM,$&UVARLEN..);
+
+                   IF SHORTEST  GT LENGTH(&UVARNAM) THEN SHORTEST = LENGTH(&UVARNAM);
+                   IF LONGEST   LT LENGTH(&UVARNAM) THEN LONGEST  = LENGTH(&UVARNAM);
+
+               END;
+
+               CHAR = LEFT(UPCASE(&UVARNAM));
+
+               SLOT = INDEX ( POSITION, CHAR );
+
+               IF SLOT EQ 0 THEN OUTVAR{37}    = OUTVAR{37}   + 1;
+               ELSE              OUTVAR{SLOT}  = OUTVAR{SLOT} + 1;
+
+               IF DONE THEN DO;
+
+                  NAME  = "&UVARNAM";
+                  LABEL = "&UVARLBL";
+                  LENGTH= "&UVARLEN";
+                  COLNUM= &UI;
+
+                  LOWVAL  = INPUT( LOWVAL, $&UVARLEN..);
+                  HIGHVAL = INPUT( HIGHVAL, $&UVARLEN..);
+
+                  QTR1ST =  "&QTR1ST  ";
+                  QTR3RD =  "&QTR3RD  ";
+                  MEDIAN =  "&MEDIAN  ";
+                  MODE   =  "&MODE    ";
+                  MODECNT=  "&MODECNT ";
+                  UNIQUES = "&UNQS"    ;
+
+                  OUTPUT;
+
+               END;
+
+         RUN;
+
+
+
+         /*
+         Middle Observation(1 ) of UTLMMCH0 - Total Obs 1
+
+          -- CHARACTER --
+         NAME                 C    8       SUBSIDIA            VARIABLE NAME
+         LABEL                C    40                          VARIABLE LABEL
+         LENGTH               C    2       12                  VARIABLE LENGTH
+         LOWVAL               C    12      Addis Ababa         LOWEST NON-BLANK VALUE
+         HIGHVAL              C    12      Warsaw              HIGHEST VALUE
+         TOTOBS               C    16      1                   TOTOBS
+
+
+          -- NUMERIC --
+         NBLANK               N    8       0                   NUMBER OF BLANK OBSERVATIONS
+         NNONBL               N    8       395                 NUMBER OF NON-BLANK OBSERVATIONS
+         SHORTEST             N    8       4                   SHORTEST LENGTH
+         LONGEST              N    8       12                  LONGEST LENGTH
+         _A                   N    8       30                  _A
+         _B                   N    8       28                  _B
+         _C                   N    8       46                  _C
+         _D                   N    8       8                   _D
+         _E                   N    8       0                   _E
+         _F                   N    8       0                   _F
+         ....
+         _K                   N    8       31                  _K
+         _L                   N    8       39                  _L
+         _M                   N    8       61                  _M
+         ....
+         _6                   N    8       0                   _6
+         _7                   N    8       0                   _7
+         _8                   N    8       0                   _8
+         _9                   N    8       0                   _9
+         __                   N    8       0                   __
+         COLNUM               N    8       3                   COLNUM
+        */
+
+        *   *  ****   ****            *    *   *  ****           ***   *   *  *****   ***
+        *   *   *  *  *   *          * *   **  *   *  *         *   *  **  *    *    *   *
+        *   *   *  *  *   *         *   *  * * *   *  *         *      * * *    *     *
+        *****   *  *  ****          *****  *  **   *  *         *      *  **    *      *
+        *   *   *  *  * *           *   *  *   *   *  *         *      *   *    *       *
+        *   *   *  *  *  *          *   *  *   *   *  *         *   *  *   *    *    *   *
+        *   *  ****   *   *         *   *  *   *  ****           ***   *   *    *     ***
+
+        #! HDRaANDaCNTS ;
+
+         DATA
+              UTLMMCH1
+               (
+                LABEL="APPEND AND USE LARGEST CHAR LENGTHS"
+               );
+
+              length
+                      lowval  $&umax
+                      highval $&umax
+               ;
+
+
+
+              SET UTLMMCH0
+                  UTLMMCH1
+               ;
+
+
+         RUN;
+
+         proc sort data=&uin(keep=&uvarnam) out=utlmmch5 noequals;
+         by &uvarnam;
+         ;run;quit;
+
+         * first quartile, median and third quartile and median;
+
+         /*
+            %let uvarnam=subsidiary;
+            %let uin=sashelp.shoes;
+            %let uobs=395;
+         */
+
+    %END; /* END VARTYPE */
+
+  %END; /* END CYCLE THROUGH VARS */
+
+  %LET RC = %SYSFUNC ( CLOSE ( &UDSID ) );
+
+
+  /* CREATE FINAL DATASET AND PROC UNIVARIATES */
+
+  *      *****  ****           ***   *****    *    *****   ***
+  *        *    *   *         *   *    *     * *     *    *   *
+  *        *    *   *          *       *    *   *    *     *
+  *        *    ****            *      *    *****    *      *
+  *        *    * *              *     *    *   *    *       *
+  *        *    *  *          *   *    *    *   *    *    *   *
+  *****    *    *   *          ***     *    *   *    *     ***
+
+  #! LTRaSTATS ;
+
+  DATA
+        utlmmch3
+         (
+          LABEL="UNIVARIATE CHR VARS 1 PAGE PER OB"
+         );
+
+         LENGTH
+                RANGE   $%EVAL ( 2 * &UMAX + 3 )
+                STARS   $101
+                VRNAME  $32
+                MODELOC $8
+                P25LOC  $8
+                P75LOC  $8
+        ;
+
+
+         SET
+             UTLMMCH1 END=DONE;
+
+         ARRAY OUTVAR {*} _A _B _C _D _E _F _G _H _I _J _K _L _M _N _O _P
+                          _Q _R _S _T _U _V _W _X _Y _Z _0 _1 _2 _3 _4 _5 _6 _7 _8 _9 __;
+
+         MODE = MAX ( OF _A -- __ );
+
+         RANGE = COMPBL(LOWVAL!!' - '!!HIGHVAL);
+
+         ZEROS=0;
+
+         P25=0;
+         P75=0;
+
+         P25LOC=' ';
+         P75LOC=' ';
+
+         DO I = 1 TO 37;
+
+            IF OUTVAR{I} EQ 0 THEN ZEROS = ZEROS + 1;
+            IF OUTVAR{I} EQ MODE THEN DO;
+
+               CALL VNAME ( OUTVAR{I}, MODELOC );
+               MODELOC = SUBSTR(MODELOC,2);
+
+            END;
+
+            P25 = P25 + 100*OUTVAR{I}/&UOBS;
+
+            IF
+               P25    GE  25 AND
+               P25LOC EQ ' ' THEN DO;
+
+               CALL VNAME ( OUTVAR{I}, P25LOC );
+               P25LOC = SUBSTR(P25LOC,2);
+
+            END;
+
+
+            P75 = P75 + 100*OUTVAR{I}/&UOBS;
+
+            IF
+               P75    GE  75 AND
+               P75LOC EQ ' ' THEN DO;
+
+               CALL VNAME ( OUTVAR{I}, P75LOC );
+               P75LOC = SUBSTR(P75LOC,2);
+
+            END;
+
+         END;
+
+         COVERAGE = INT ( 100 - 100 * ZEROS / 37 );
+
+
+         FILE PRINT;
+
+         SCALE = INT ( LOG10(MODE) + 1 );
+
+         REP=10**(SCALE-2);
+
+
+         PUT
+               ///
+              'TABLE DESCRIPTION---'     @24      "&ULBL"  /
+              'TABLE NAME----------'     @24      "&UIN."  //
+              'ROWS----------------'     @24      "&UOBS"  //
+              'VARIABLE NAME-------'     @24      NAME     /
+              'COLUMN LABEL--------'     @24      LABEL    //
+              'FIELD LENGTH--------'     @24      LENGTH   /
+              'COLUMN NUMBER-------'     @24      COLNUM   //
+              'NUMBER BLANKS-------'     @24      NBLANK   /
+              'NUMBER NON BLANK----'     @24      NNONBL   //
+              'UNIQUES----'              @24      UNIQUES   //
+              'LOWEST VALUE--------'     @24      LOWVAL   /
+              'HIGHEST VALUE-------'     @24      HIGHVAL  //
+              'SHORTEST LENGTH-----'     @24      SHORTEST /
+              'LONGEST LENGTH------'     @24      LONGEST  //
+              'RANGE---------------'     @24      RANGE    //
+              'INTERQTILE LTR RANGE'     @24      P25LOC ' - ' P75LOC    //
+              'INTERQTILE RANGE----'     @24      qtr1st ' - ' qtr3rd    //
+              'MODE LETTER---------'     @24      MODELOC $3. ' Value ' MODE  //
+              'MEDIAN--------------'     @24      MEDIAN         //
+              'MODE----------------'     @24      mode ' Count ' modecnt //
+              'COVERAGE % ALPHA-NUM'     @24      COVERAGE //
+              'EACH * REPRESENTS---'     @24      REP ' OCCURANCES ' /
+        ;
+
+        DO I = 1 TO 37;
+
+           IF OUTVAR{I} NE 0 THEN DO;
+
+              NSTARS = ROUND (OUTVAR{I} / 10**(SCALE - 2), 1 );
+
+              STARS = REPEAT('*', NSTARS);
+
+              CALL VNAME (OUTVAR{I} , VRNAME );
+
+              VRNAME = SUBSTR( VRNAME, 2);
+
+              PUT VRNAME ' ! ' STARS  @110 OUTVAR{I} ;
+
+           END;
+
+        END;
+
+        PUT _PAGE_;
+
+   RUN;
+
+
+%END; /* failed macro arguments */
+
+%MEND _vdo_UNICHR;
+
+****   ****   *****  *   *  *****  ****
+ *  *  *   *    *    *   *  *      *   *
+ *  *  *   *    *    *   *  *      *   *
+ *  *  ****     *    *   *  ****   ****
+ *  *  * *      *    *   *  *      * *
+ *  *  *  *     *     * *   *      *  *
+****   *   *  *****    *    *****  *   *
+
+#! DRIVER ;
+
+
 %macro utlvdoc
     (
     libname        = work    /* libname of input dataset */
@@ -5183,6 +5186,8 @@ run;quit;
 
     ,maxmin        = 0       /* 0 or 1                      */
 
+    ,unichr        = 0       /* 0 or 1                      */
+
     ,dupcol        = 0       /* 0 or 1                      */
 
     ,unqtwo        = 0       /* 0 or ZIP_CLASS STATECODE STATENAME   */
@@ -5194,8 +5199,6 @@ run;quit;
     ,oneone        = 0       /* 0 or 1                      */
 
     ,cramer        = 0       /* 0 or 1                      */
-
-    ,misspat       = 0       /* 0 or 1                      */
 
     ,printto       = output  /* file or output if output window */
 
@@ -5209,7 +5212,7 @@ run;quit;
     * Data step to generate SQL statements;
     * ..."vv" stands for "verify + validate";
 
-    *--------------------;
+    *--------------------
 
     proc optsave out=sasuser.optsave;
     run;quit;
@@ -5247,6 +5250,8 @@ run;quit;
 
    %put &=outchk;
 
+   proc optsave out=sasuser.optsave;
+   run;quit;
 
     /*
     %let libname  = work     ;
@@ -5321,6 +5326,11 @@ run;quit;
            %If %Upcase(&maxmin)  ne 0  %Then %Do;
               %_vdo_macnam(MAXMIN);
               %_vdo_getmaxmin;  /* max and min listing */
+           %end;
+
+           %If %Upcase(&unichr)  ne 0  %Then %Do;
+              %_vdo_macnam(UNICHAR);
+              %_vdo_unichr;  /* proc univariate on char vars */
            %end;
 
            %If %Upcase(&optlength)  ne 0  %Then %Do;
@@ -5415,11 +5425,6 @@ run;quit;
 
            %_vdo_macnam(CONTENTS);
 
-           %if %upcase(&misspat) ne 0 %then %do; /* one to one -- many to one -- many to many */
-              %_vdo_macnam(MISSaPAT);
-              %_vdo_mispat;
-           %end;
-
            %_vdo_begmidend;  /* first 20 obs - middle 20 obs and last 20 obs */
            %_vdo_clean;      /* cleanup the work directory */
 
@@ -5438,12 +5443,16 @@ run;quit;
 
 %mend utlvdoc;
 
+/*
+%let libname= work   ;
+%let data=zipcode ;
 
-proc datasets kill nolist;
+%_vdo_unichr;
+
+proc datasets kill;
 run;quit;
 
-options noerrorabend;
-%utlnopts;
+%utlopts;
 
 * add a date;
 data zipcode;
@@ -5454,157 +5463,60 @@ data zipcode;
   if _n_>22000 then fake_somemissing=_n_;
   if _n_>40000 then fake_misswithconstant='A';
 run;quit;
-
-
-* to turn debug options on use macro utlopts, off use utlnopts;
-
-%utlnopts;
-
-%utlvdoc
-    (
-    libname        = work      /* libname of input dataset */
-
-    ,data          = zipcode      /* name of input dataset */
-
-    ,key           = zip          /* 0 or variable */
-
-    ,ExtrmVal      = 10           /* display top and bottom 30 frequencies */
-
-    ,UniPlot       = 1            /* 'true' enables ('false' disables) plot option on univariate output */
-
-    ,UniVar        = 1            /* 'true' enables ('false' disables) plot option on univariate output */
-
-    ,chart         = 1            /* 0 or 1 line printer chart */
-
-    ,taball        = AREACODES DST STATECODE STATENAME ZIP_CLASS STATE Y COUNTY /* variable 0 */
-
-    ,tabone        = STATECODE    /* 0 or  variable vs all other variables          */
-
-    ,mispop        = 1            /* 0 or 1  missing vs populated*/
-
-    ,dupcol        = 1            /* 0 or 1  columns duplicated  */
-
-    ,unqtwo        = AREACODES DST STATECODE STATENAME ZIP_CLASS STATE Y COUNTY COUNTYNM            /* 0 */
-
-    ,vdocor        = 1            /* 0 or 1  correlation of numeric variables */
-
-    ,oneone        = 1            /* 0 or 1  one to one - one to many - many to many */
-
-    ,cramer        = 1            /* 0 or 1  association of character variables    */
-
-    ,optlength     = 1
-
-    ,misspat       = 1
-
-    ,maxmin        = 1
-
-    ,printto       = c:\github\&data..txt        /* file or output if output window */
-
-    ,Cleanup       = 0           /* 0 or 1 delete intermediate datasets */
-
-    );
+*/
 
 
 %*utlvdoc
     (
-    libname        = work      /* libname of input dataset */
-
+    libname        = work         /* libname of input dataset */
     ,data          = zipcode      /* name of input dataset */
-
     ,key           = zip          /* 0 or variable */
-
     ,ExtrmVal      = 10           /* display top and bottom 30 frequencies */
+    ,UniPlot       = 1            /* 'true' enables ('false' disables) plot option on univariate output */
+    ,UniVar        = 1            /* 'true' enables ('false' disables) plot option on univariate output */
+    ,chart         = 1            /* 0 or 1 line printer chart */
+    ,taball        = AREACODES DST STATECODE STATENAME ZIP_CLASS STATE Y COUNTY /* variable 0 */
+    ,tabone        = STATECODE    /* 0 or  variable vs all other variables          */
+    ,mispop        = 1            /* 0 or 1  missing vs populated*/
+    ,dupcol        = 1            /* 0 or 1  columns duplicated  */
+    ,unqtwo        = AREACODES DST STATECODE STATENAME ZIP_CLASS STATE Y COUNTY COUNTYNM            /* 0 */
+    ,vdocor        = 1            /* 0 or 1  correlation of numeric variables */
+    ,oneone        = 1            /* 0 or 1  one to one - one to many - many to many */
+    ,cramer        = 1            /* 0 or 1  association of character variables    */
+    ,optlength     = 1
+    ,maxmin        = 1
+    ,unichr        = 1
+    ,printto       = d:\txt\vdo\&data..txt        /* file or output if output window */
+    ,Cleanup       = 0           /* 0 or 1 delete intermediate datasets */
+    );
 
-    ,UniPlot       = 1
-
+%utlvdoc
+    (
+    libname        = work      /* libname of input dataset */
+    ,data          = zipcode      /* name of input dataset */
+    ,key           = zip          /* 0 or variable */
+    ,ExtrmVal      = 10           /* display top and bottom 30 frequencies */
+    ,UniPlot       = 0
     ,UniVar        = 0
-
     ,chart         = 0
-
     ,taball        = 0
-
     ,tabone        = 0
-
     ,mispop        = 0
-
     ,dupcol        = 0
-
     ,unqtwo        = 0
-
     ,vdocor        = 0
-
     ,oneone        = 0
-
     ,cramer        = 0
-
-    ,misspat       = 1
-
     ,optlength     = 0
-
     ,maxmin        = 0
-
-    ,printto       = d:\fix\vdo\&data..txt
-
+    ,unichr        = 1
+    ,printto       = d:\txt\vdo\&data..txt
     ,Cleanup       = 0
-
     );
 
 /*
- These two columns display
- the montotonic missing pattern.
- If fake some missing is missing
- then fake missing with constant is missing.
-
- Monotonic missing are easier to
- impute than other patterns.
-
-
-         f
-         a
-         k
-         e
-         _
-    f    m
-    a    i
-    k    s
-    e    s
-    _    w
-    s    i
-    o    t
-    m    h
-    e    c
-    m    o
-    i    n
-    s    s
-    s    t
-    i    a
-    n    n
-    g    t
-
-
-    .    .
-    .    .
-    .    .
-    .    .
-    .    .
-    .    .
-    .    .
-    .    .
-    X    .
-    X    .
-    X    .
-    X    .
-    X    .
-    X    .
-    X    .
-    X    .
-    X    X
-    X    X
-    X    X
-    X    X
-    X    X
-    X    X
-    X    X
-    X    X
-
+proc catalog
+    catalog=work.sasmacr;
+    contents out=MacroLst;
+  quit;
 */
