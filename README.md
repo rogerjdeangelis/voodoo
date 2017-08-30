@@ -50,46 +50,12 @@ The macro invocation is at the end of this file
 19.  List of identical columns ie date and date1 have equal values on all
      observations
 19   One to Many, Many to One, One to Many and Many to Many
-20   Cochran-Mantel-Haenszel Statistics
+20   Cochran-Mantel-Haenszel Statistics (Cramer relationship amoung catagorical variables)
 21   Finds missing patterns
 22   Printout of first 20, middle 20 and last 20 observations.
+23   Missing Pattern amalysis
+24   Missing populated in a single table
 
 
-for easy editing here are the locations macros
-prefix area helps
 
-also these macros do the analyses above
-
-   54        %macro utlnopts
-   90        %macro _vdo_macnam
-   106       %macro utlfkil
-   155       %macro nobs
-   196       %macro nvar
-   271       %macro _vdo_cdedec
-   303       %macro _vv_annxtb
-   415       %macro _vdo_basic
-   3056      %macro _vdo_optlen
-   3149      %macro _vdo_getmaxmin
-   3174      %macro _vdo_getmaxmin001;
-   3242      %macro _vdo_begmidend
-   3336      %macro _vdo_clean
-   3407      %macro _vdo_chartx
-   3611      %macro _vdo_mispop
-   3658      %macro _vdo_keyunq
-   3741      %macro _vdo_dupcol
-   3826      %macro _vdo_cor
-   3889      %macro _vdo_mnymny
-   3904      %macro _vdo_relhow
-   4027      %macro _vdo_cmh
-   4123      %macro _vdo_tabone
-   4188      %macro _vdo_taball
-   4268      %macro _vdo_unqtwo
-   4375      %macro qcmprltb
-   4401      %macro qblankta
-   4430      %macro qblanktc
-   4451      %macro qlastvar
-   4481      %macro _vdo_mispat
-   5031      %macro utl_getstm
-   5044      %macro DirExist
-   5056      %macro utlvdoc
 */
