@@ -1,5 +1,3 @@
-
-
 /*
 
 %let pgm=oto_voodoo;
@@ -13,44 +11,45 @@ if index(lowcase(_infile_),'%macro')>0 then do;
  put @5 _n_ @15 macro $32.;
 end;
 run;quit;
-*/
 
-/* for easy editing here are the locations macros
+for easy editing here are the locations macros
 prefix area helps
-  58        %macro utlnopts
-  94        %macro _vdo_macnam
-  110       %macro utlfkil
-  159       %macro nobs
-  200       %macro nvar
-  275       %macro _vdo_cdedec
-  307       %macro _vv_annxtb
-  419       %macro _vdo_basic
-  3061      %macro qcmprltb
-  3087      %macro qblankta
-  3116      %macro qblanktc
-  3137      %macro qlastvar
-  3168      %macro _vdo_misspat
-  3539      %macro _vdo_optlen
-  3632      %macro _vdo_getmaxmin
-  3657      %macro _vdo_getmaxmin001;
-  3725      %macro _vdo_begmidend
-  3819      %macro _vdo_clean
-  3890      %macro _vdo_chartx
-  4094      %macro _vdo_mispop
-  4141      %macro _vdo_keyunq
-  4224      %macro _vdo_dupcol
-  4309      %macro _vdo_cor
-  4375      %macro _vdo_mnymny
-  4390      %macro _vdo_relhow
-  4513      %macro _vdo_cmh
-  4609      %macro _vdo_tabone
-  4674      %macro _vdo_taball
-  4754      %macro _vdo_unqtwo
-  4956      %macro utl_getstm
-  4969      %macro DirExist
-  4983      %MACRO _vdo_UNICHR
-  5647      %macro _vdo_outlyr
-  5840      %macro utlvdoc
+64        %macro utlnopts
+101       %macro cmpres
+129       %macro _vdo_macnam
+145       %macro utlfkil
+194       %macro nobs
+235       %macro nvar
+310       %macro _vdo_cdedec
+342       %macro _vv_annxtb
+454       %macro _vdo_basic
+3096      %macro qcmprltb
+3122      %macro qblankta
+3151      %macro qblanktc
+3172      %macro qlastvar
+3203      %macro _vdo_misspat
+3574      %macro _vdo_optlen
+3667      %macro _vdo_getmaxmin
+3692      %macro _vdo_getmaxmin001;
+3760      %macro _vdo_begmidend
+3854      %macro _vdo_clean
+3925      %macro _vdo_chartx
+4129      %macro _vdo_mispop
+4168      %macro _vdo_mispoptbl
+4258      %macro _vdo_keyunq
+4341      %macro _vdo_dupcol
+4426      %macro _vdo_cor
+4492      %macro _vdo_mnymny
+4507      %macro _vdo_relhow
+4630      %macro _vdo_cmh
+4726      %macro _vdo_tabone
+4791      %macro _vdo_taball
+4871      %macro _vdo_unqtwo
+5073      %macro utl_getstm
+5086      %macro DirExist
+5100      %MACRO _vdo_UNICHR
+5764      %macro _vdo_outlyr
+5957      %macro utlvdoc
 
 */
 
@@ -97,6 +96,35 @@ OPTIONS
 RUN;quit;
 
 %MEND UTLNOPTS;
+
+
+%macro cmpres(text);
+%*********************************************************************;
+%*                                                                   *;
+%*  MACRO: CMPRES                                                    *;
+%*                                                                   *;
+%*  USAGE: 1) %cmpres(argument)                                      *;
+%*                                                                   *;
+%*  DESCRIPTION:                                                     *;
+%*    This macro returns the argument passed to it in an unquoted    *;
+%*    form with multiple blanks compressed to single blanks and also *;
+%*    with leading and trailing blanks removed.                      *;
+%*                                                                   *;
+%*    Eg. %let macvar=%cmpres(&argtext)                              *;
+%*                                                                   *;
+%*  NOTES:                                                           *;
+%*    The %LEFT and %TRIM macros in the autocall library are used    *;
+%*    in this macro.                                                 *;
+%*                                                                   *;
+%*********************************************************************;
+%local i;
+%let i=%index(&text,%str(  ));
+%do %while(&i ne 0);
+  %let text=%qsubstr(&text,1,&i)%qleft(%qsubstr(&text,&i+1));
+  %let i=%index(&text,%str(  ));
+%end;
+%left(%qtrim(&text))
+%mend;
 
 %macro _vdo_macnam(macnam);
 
@@ -2990,7 +3018,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
             text = "proc univariate data= &libname..&data.";
 
             call execute( text );
-       /*
+
             if &UniPlot. ne 0 then
                 do;
 
@@ -2998,7 +3026,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
                 call execute ( text );
 
                 end;  * UniPlot processing;
-       */
+
 
             text = "; ";
             call execute( text );
@@ -4136,6 +4164,88 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
     run;
 
 %mend _vdo_mispop;
+
+%macro _vdo_mispoptbl(lib=&libname,mem=&data);
+
+    /*
+
+      data zipcode;
+        set sashelp.zipcode;
+      run;quit;
+
+      %let lib=work;
+      %let mem=zipcode;
+    */
+
+    title1 "Missing vs Populated Frequencies";
+
+    Proc format;
+         value mispopn
+          . = 'MIS'
+          other='POP';
+    ;
+         value $mispopc
+          ' ' = 'MIS'
+          other='POP'
+    ;
+    run;
+
+    proc sql noprint;
+       select count(*) into :_vdo_popmiscnt trimmed from %str(&lib).%str(&mem)
+    ;quit;
+
+    ods exclude all;
+    ods output onewayfreqs=_vdo_mispop(keep=table frequency);
+    proc freq data=%str(&lib).%str(&mem) ;
+    format _character_ $mispopc. _numeric_ mispopn.;
+    run;quit;
+    ods select all;
+
+    /*
+    Up to 40 obs WORK.HSP_QA1_FRQ total obs=21
+
+    Obs    TABLE                FREQUENCY
+
+      1    Table ZIP              41267
+      2    Table Y                41267
+      3    Table X                41267
+      4    Table ZIP_CLASS        11455
+      5    Table CITY             41267
+    */
+
+    data _vdo_mispop001;
+       retain variable pop mis mispct;
+       length variable $32;
+       keep variable pop mis mispct;
+       set _vdo_mispop (rename=FREQUENCY=pop);
+       mis=sum(&_vdo_popmiscnt, -1*pop);
+       mispct=mis/&_vdo_popmiscnt;
+       variable=scan(table,2);
+    run;quit;
+
+    proc report data=_vdo_mispop001 nowd;
+      cols ( "Populated,  Missing and Missing Frequencies and Percents" variable pop mis mispct);
+      define variable /display "Variable"   ;
+      define pop      /display "Populated"           format=comma18.;
+      define mis      /display "Missing"             format=comma18.;
+      define mispct   /display "Missing#Percent"     format=percent10.2;
+    run;quit;
+
+
+%mend _vdo_mispoptbl;
+
+
+/*
+proc datasets lib=work kill;
+run;quit;
+
+data zipcode;
+  set sashelp.zipcode;
+run;quit;
+
+%_vdo_mispoptbl(lib=work,mem=zipcode)
+*/
+
 
 *   *  *****  *   *  *   *  *   *   ***
 *  *   *      *   *  *   *  **  *  *   *
@@ -5651,7 +5761,7 @@ QUIT;
 
 #! OUTLYR ;
 
-%macro _vdo_outlyr(dummy);
+%macro _vdo_outlyr(libname=&libname,data=&data);
 
   /*
     %let libname =sashelp;
@@ -5829,7 +5939,7 @@ QUIT;
   %let data=bweight;
 */
 
-%_vdo_outlyr;
+%*_vdo_outlyr;
 
 
 
@@ -5867,6 +5977,8 @@ QUIT;
     ,tabone        = 0       /* 0 or variable name          */
 
     ,mispop        = 0       /* 0 or 1                      */
+
+    ,mispoptbl     = 0       /* 0 or 1                      */
 
     ,maxmin        = 0       /* 0 or 1                      */
 
@@ -6066,6 +6178,12 @@ QUIT;
            %end;
 
 
+           %if %upcase(&mispoptbl) ne 0 %then %do; /* one to one -- many to one -- many to many */
+               %_vdo_macnam(MISaPOPaTBL);
+                %_vdo_mispoptbl ;run;         /* missing and populated */
+           %end;
+
+
            %if %upcase(&mispop) ne 0 %then %do; /* one to one -- many to one -- many to many */
                %_vdo_macnam(MISaPOP);
                 %_vdo_mispop ;run;         /* missing and populated */
@@ -6161,7 +6279,7 @@ data zipcode;
 run;quit;
 */
 
-%*utlvdoc
+%utlvdoc
     (
     libname        = work         /* libname of input dataset */
     ,data          = zipcode      /* name of input dataset */
@@ -6174,6 +6292,7 @@ run;quit;
     ,taball        = AREACODES DST STATECODE STATENAME ZIP_CLASS STATE Y COUNTY /* variable 0 */
     ,tabone        = STATECODE    /* 0 or  variable vs all other variables          */
     ,mispop        = 1            /* 0 or 1  missing vs populated*/
+    ,mispoptbl     = 1            /* 0 or 1  missing vs populated*/
     ,dupcol        = 1            /* 0 or 1  columns duplicated  */
     ,unqtwo        = AREACODES DST STATECODE STATENAME ZIP_CLASS STATE Y COUNTY COUNTYNM            /* 0 */
     ,vdocor        = 1            /* 0 or 1  correlation of numeric variables */
@@ -6187,33 +6306,8 @@ run;quit;
     ,Cleanup       = 0           /* 0 or 1 delete intermediate datasets */
     );
 
-%*utlvdoc
-    (
-    libname        = work      /* libname of input dataset */
-    ,data          = zipcode      /* name of input dataset */
-    ,key           = zip          /* 0 or variable */
-    ,ExtrmVal      = 10           /* display top and bottom 30 frequencies */
-    ,UniPlot       = 0
-    ,UniVar        = 0
-    ,chart         = 0
-    ,misspat       = 0
-    ,taball        = 0
-    ,tabone        = 0
-    ,mispop        = 0
-    ,dupcol        = 0
-    ,unqtwo        = 0
-    ,vdocor        = 0
-    ,oneone        = 0
-    ,cramer        = 0
-    ,optlength     = 0
-    ,maxmin        = 0
-    ,unichr        = 0
-    ,outlier       = 1
-    ,printto       = d:\txt\vdo\&data..txt
-    ,Cleanup       = 0
-    );
-
-%*utlvdoc
+* test just one;
+%utlvdoc
     (
     libname        = sashelp      /* libname of input dataset */
     ,data          = zipcode      /* name of input dataset */
@@ -6226,6 +6320,7 @@ run;quit;
     ,taball        = 0
     ,tabone        = 0
     ,mispop        = 0
+    ,mispoptbl     = 1
     ,dupcol        = 0
     ,unqtwo        = 0
     ,vdocor        = 0
@@ -6240,47 +6335,7 @@ run;quit;
     );
 
 /*
-proc catalog
-    catalog=work.sasmacr;
-    contents out=MacroLst;
-  quit;
-sashelp.bweight
-
-
-* TWOVARS.SAS REVISED 3-JUL-03;
-* DATA FOR EXAMPLE IN NESUG 16 MISS_PAT PAPER;
-DATA TWOVARS;
-INPUT Variab01 1 Second_Var $ 3-5;
-LABEL Variab01='VARIABLE NUMBER 1';
-LABEL Second_Var='VARIABLE NUMBER 2';
-cards;
-2
-1 ABC
-1
-1
-2 DEF
-2
-1
-1 GHI
-;
-PROC PRINT DATA=TWOVARS;
-TITLE 'TWOVARS';
-RUN;
-* Examples of calls to MISS_PAT;
-OPTIONS MPRINT;
- %MISSPAT(DATA=WORK.TWOVARS);;run;quit;
-OPTIONS NOMPRINT;
-OPTIONS MPRINT;
- %MISS_PAT(DS=sashelp.zipcode,by=statecode,collapse=yes)
-OPTIONS NOMPRINT;
-
-data geoexs;
-  set sashelp.geoexs(keep=predirabrv--blkgrp tlid mtfcc side);
-run;quit;
-
-%let libname        = sashelp;
-%let  data          = cars;
-options ls=500;
-%_vdo_misspat(data=&libname..&data);
+* test a specific macro;
+%_vdo_mispoptbl(lib=sashelp,mem=cars);
 
 */
