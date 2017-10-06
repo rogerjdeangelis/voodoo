@@ -1,5 +1,6 @@
 # voodoo
-Validation and Verification of Database Tables
+
+Validation and Verification of Database Tables. Profile anay SAS dataset. Cardinality, outliers, top n frequencies, bottom n frequencies, one to many, many to many, associations between numerical and character variables abd duplicates on key
 
 /*
 %let pgm=oto_voodoo;
