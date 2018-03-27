@@ -5915,11 +5915,11 @@ QUIT;
        %else %do;
           data _null_;
              file print;
-             put  "&var Outlier analsys up to the 30 outliers(&obs outliers identified)";
+             put  "&var Outlier analsys up to the 30 outliers(&obs expected outliers identified)";
              put  "Robust Regression with &cutoff * sigma cuttoff and removal of expected outliers?";
-             put "***********************************";
-             put " No outliers using robustreg";
-             put "***********************************";
+             put "**************************8888*********";
+             put " No unexpected outliers using robustreg";
+             put "*************************8888**********";
           run;quit;
        %end;   /* do therest */
    proc datasets lib=work;
