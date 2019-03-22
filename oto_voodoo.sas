@@ -4132,7 +4132,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
 
     Proc format;
          value msspop
-          . = 'Missing'
+          ., ._, .A,.B,.C,.D,.E,.F,.G,.H,.I,.J,.K,.L,.M,.N,.O,.P,.Q,.R,.S,.T,.U,.V,.W,.X,.Y,.Z = "MIS"
           0 = 'Zero'
           0<-high = "Positive"
           low-<0 = 'Negative'
