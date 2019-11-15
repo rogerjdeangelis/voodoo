@@ -597,13 +597,13 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
 
 
     * ...UniPlot - change to false if illegal, with warning;
-
+/*
     %if &UniPlot. ne 0  %then
         %do;
         %put WARNING: (VV macro)  invalid UniPlot value &UniPlot. selected.  Using 'false' instead;
         %let UniPlot = false;
         %end;
-
+*/
     * ...Cleanup - change to false if illegal, with warning;
 
 
@@ -3015,14 +3015,14 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
           do;
 
             /*text = "ods exclude all;ods listing;proc univariate data= &libname..&data."; */
-            text = "proc univariate data= &libname..&data.";
+            text = "proc univariate data= &libname..&data. plots";
 
             call execute( text );
 
             if &UniPlot. ne 0 then
                 do;
 
-                text= "plot";
+                text= "plots";
                 call execute ( text );
 
                 end;  * UniPlot processing;
@@ -4132,7 +4132,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
 
     Proc format;
          value msspop
-          ., ._, .A,.B,.C,.D,.E,.F,.G,.H,.I,.J,.K,.L,.M,.N,.O,.P,.Q,.R,.S,.T,.U,.V,.W,.X,.Y,.Z = "MIS"
+          . = 'Missing'
           0 = 'Zero'
           0<-high = "Positive"
           low-<0 = 'Negative'
@@ -6257,6 +6257,8 @@ QUIT;
 
 %mend utlvdoc;
 
+%macro offcall;
+
 /*
 %let libname= work   ;
 %let data=zipcode ;
@@ -6279,7 +6281,7 @@ data zipcode;
 run;quit;
 */
 
-%utlvdoc
+%*utlvdoc
     (
     libname        = work         /* libname of input dataset */
     ,data          = zipcode      /* name of input dataset */
@@ -6307,7 +6309,7 @@ run;quit;
     );
 
 * test just one;
-%utlvdoc
+%*utlvdoc
     (
     libname        = sashelp      /* libname of input dataset */
     ,data          = zipcode      /* name of input dataset */
@@ -6339,3 +6341,5 @@ run;quit;
 %_vdo_mispoptbl(lib=sashelp,mem=cars);
 
 */
+
+%mend offcall;
