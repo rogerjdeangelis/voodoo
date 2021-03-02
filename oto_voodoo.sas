@@ -5966,7 +5966,7 @@ QUIT;
 
     ,UniPlot       = 0       /* 'true' enables ('false' disables) plot option on univariate output */
 
-    ,ExtrmVal      = 100     /* Levesl for switch to top extrmval and botton extrmval */
+    ,ExtrmVal      = 10     /* Levesl for switch to top extrmval and botton extrmval */
 
     ,misspat       = 0       /* 0 or 1 patterns of missings */
 
