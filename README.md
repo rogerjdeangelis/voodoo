@@ -45,8 +45,7 @@ The macro invocation is at the end of this file
      max top 16 levels
 16.  Maximum and minimum lengths to hold all numeric and character variables
      exactly (optimize)
-17.  Correlation of all pairs of numeric variables sorted by largest
-    correlation to lowest.
+17.  Correlation of all pairs of numeric variables sorted by largest correlation to lowest.    
 18.  Nice display of max and mins for numeric and character in one table
 19.  List of identical columns ie date and date1 have equal values on all
      observations
