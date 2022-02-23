@@ -56,6 +56,7 @@ The macro invocation is at the end of this file
 22   Printout of first 20, middle 20 and last 20 observations.
 23   Missing Pattern amalysis
 24   Missing populated in a single table
+25   Missing Pattern Analysis
 
 
 
