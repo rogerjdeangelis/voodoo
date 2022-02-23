@@ -46,8 +46,8 @@ The macro invocation is at the end of this file
 16.  Maximum and minimum lengths to hold all numeric and character variables
      exactly (optimize)
 17.  Correlation of all pairs of numeric variables sorted by largest correlation to lowest.    
-18.  Nice display of max and mins for numeric and character in one table
-19.  List of identical columns ie date and date1 have equal values on all
+    18.  Nice display of max and mins for numeric and character in one table
+    19.  List of identical columns ie date and date1 have equal values on all
      observations
 19   One to Many, Many to One, One to Many and Many to Many
 20   Cochran-Mantel-Haenszel Statistics (Cramer relationship amoung catagorical variables)
