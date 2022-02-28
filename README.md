@@ -45,6 +45,7 @@ The macro invocation is at the end of this file
      max top 16 levels
 15.  Maximum and minimum lengths to hold all numeric and character variables
      exactly (optimize)
+     
     16. Nice display of max and mins for numeric and character in one table                       
     17. List of identical columns ie date and date1 have equal values on all observations         
     18. One to Many, Many to One, One to Many and Many to Many                                    
