@@ -23,37 +23,29 @@ You should be able to run this as is.
 
 The macro invocation is at the end of this file
 
-1.   Dataset level summary -- ie number of obs, variable types, static data
-2.   Cardinality page  (primary keys, codes/decodes  number of unique
-     values for every variable - EG fails here)
-3.   Complete frequency for all variables numeric and character with less
-     than 200 levels
-4.   For variables with over 200 levels top 100 most frequent and bottom
-     100 least frequent
-     Least frequent are the more interesting cases.
-5.   Proc means on all numeric variables
-6.   Proc univariate on all numeric variables
-7.   Special datetime  analysis
-9.   Histograms on all variables with less than 200 levels
-10.  Proc contents
-11.  Frequency of all numeric variables Missing, negative, zero and positive
-12.  Duplicates on single or compound key. Output printed vertically for
-     easy comparison
-13.  Cross tabs of every variable with every other variable top 16 levels
-     (if selectd)
-14.  You can also select one variable to cross tab with all other variables
-     max top 16 levels
-15.  Maximum and minimum lengths to hold all numeric and character variables
-     exactly (optimize)
-     
-    16. Nice display of max and mins for numeric and character in one table                       
-    17. List of identical columns ie date and date1 have equal values on all observations         
-    18. One to Many, Many to One, One to Many and Many to Many                                    
-    29. Cochran-Mantel-Haenszel Statistics (Cramer relationship amoung catagorical variables)     
-    20. Finds missing patterns                                                                    
-    21. Printout of first 20, middle 20 and last 20 observations.                                 
-    22. Missing Pattern amalysis                                                                  
-    23. Missing populated in a single table                                                       
-    24. Missing Pattern Analysis                                                                  
-    25. Correlation of all pairs of numeric variables sorted by largest correlation to lowest.    
+    1. Dataset level summary -- ie number of obs, variable types, static data                                                                 
+    2. Cardinality page (primary keys, codes/decodes number of unique values for every variable - EG fails here)                              
+    3. Complete frequency for all variables numeric and character with less than 200 levels                                                   
+    4. For variables with over 200 levels top 100 most frequent and bottom 100 least frequent Least frequent are the more interesting cases.  
+    5. Proc means on all numeric variables                                                                                                    
+    6. Proc univariate on all numeric variables                                                                                               
+    7. Special datetime analysis                                                                                                              
+    8. Histograms on all variables with less than 200 levels                                                                                  
+    9. Proc contents                                                                                                                          
+    10. Frequency of all numeric variables Missing, negative, zero and positive                                                               
+    11. Duplicates on single or compound key. Output printed vertically for easy comparison                                                   
+    12. Cross tabs of every variable with every other variable top 16 levels (if selectd)                                                     
+    13. You can also select one variable to cross tab with all other variables max top 16 levels                                              
+    14. Maximum and minimum lengths to hold all numeric and character variables exactly (optimize)                                            
+    15. Correlation of all pairs of numeric variables sorted by largest correlation to lowest.                                                
+    16. Nice display of max and mins for numeric and character in one table                                                                   
+    17. List of identical columns ie date and date1 have equal values on all observations                                                     
+    18. One to Many, Many to One, One to Many and Many to Many                                                                                
+    19. Cochran-Mantel-Haenszel Statistics (Cramer relationship amoung catagorical variables)                                                 
+    20. Finds missing patterns                                                                                                                
+    21. Printout of first 20, middle 20 and last 20 observations.                                                                             
+    22. Missing Pattern amalysis                                                                                                              
+    23. Missing populated in a single table                                                                                                   
+    24. Missing Pattern Analysis                                                                                                              
+
 
