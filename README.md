@@ -43,20 +43,16 @@ The macro invocation is at the end of this file
      (if selectd)
 14.  You can also select one variable to cross tab with all other variables
      max top 16 levels
-16.  Maximum and minimum lengths to hold all numeric and character variables
+15.  Maximum and minimum lengths to hold all numeric and character variables
      exactly (optimize)
-17.  Correlation of all pairs of numeric variables sorted by largest correlation to lowest.    
-    18.  Nice display of max and mins for numeric and character in one table
-    19.  List of identical columns ie date and date1 have equal values on all
-     observations
-19   One to Many, Many to One, One to Many and Many to Many
-20   Cochran-Mantel-Haenszel Statistics (Cramer relationship amoung catagorical variables)
-21   Finds missing patterns
-22   Printout of first 20, middle 20 and last 20 observations.
-23   Missing Pattern amalysis
-24   Missing populated in a single table
-25   Missing Pattern Analysis
+    16. Nice display of max and mins for numeric and character in one table                       
+    17. List of identical columns ie date and date1 have equal values on all observations         
+    18. One to Many, Many to One, One to Many and Many to Many                                    
+    29. Cochran-Mantel-Haenszel Statistics (Cramer relationship amoung catagorical variables)     
+    20. Finds missing patterns                                                                    
+    21. Printout of first 20, middle 20 and last 20 observations.                                 
+    22. Missing Pattern amalysis                                                                  
+    23. Missing populated in a single table                                                       
+    24. Missing Pattern Analysis                                                                  
+    25. Correlation of all pairs of numeric variables sorted by largest correlation to lowest.    
 
-
-
-*/
