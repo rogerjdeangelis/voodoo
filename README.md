@@ -46,6 +46,39 @@ The macro invocation is at the end of this file
     21. Printout of first 20, middle 20 and last 20 observations.                                                                             
     22. Missing Pattern amalysis                                                                                                              
     23. Missing populated in a single table                                                                                                   
-    24. Missing Pattern Analysis                                                                                                              
+    24. Missing Pattern Analysis  
+
+    SAMPLE RUN
+
+    %inc "c:/oto/oto_voodoo.sas";
+
+    %utlvdoc
+    (
+    libname        = sashelp         /* libname of input dataset */
+    ,data          = zipcode      /* name of input dataset */
+    ,key           = 0            /* 0 or variable */
+    ,ExtrmVal      = 10           /* display top and bottom 30 frequencies */
+    ,UniPlot       = 0            /* 0 or univariate plots    */
+    ,UniVar        = 0            /* 0 or univariate analysis */
+    ,chart         = 0            /* 0 or proc chart horizontal histograme */
+    ,misspat       = 0            /* 0 or 1 missing patterns */
+    ,taball        = 0            /* 0 crosstabs of all pairwise combinations of vriables */
+    ,tabone        = 0            /* 0 or all pairwise cross tabs with limits */
+    ,mispop        = 0            /* 0 0 negative positive or missing on each variable */
+    ,mispoptbl     = 0            /* 0 missing populated table */
+    ,dupcol        = 0            /* 0 do two columns have the same values in all rows */
+    ,unqtwo        = 0            /* 0 only use to find primary key unique leveels of compund keys */
+    ,vdocor        = 0            /* 0 or all pairwise parametric and non parametric collolations */
+    ,oneone        = 0            /* 0 or 1:1  1:many many:many */
+    ,cramer        = 1            /* 0 or cramer V variable crossed with all others */
+    ,optlength     = 0            /* 0 optimum length for character and numeric variables */
+    ,maxmin        = 0            /* 0 or max min for every varuiable */
+    ,unichr        = 0            /* 0 univariate analysis of character variiables */
+    ,outlier       = 0            /* 0 robust regression determination of outliers */
+    ,rsquare       = zip x y msa state  /* 0 robust regression determination of outliers */
+    ,printto       = c:\txt\vdo\&data..txt  /* save the voluminous output */
+    ,Cleanup       = 0
+    );
+
 
 
