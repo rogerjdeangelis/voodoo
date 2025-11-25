@@ -75,7 +75,6 @@ The macro invocation is at the end of this file
     ,maxmin        = 0            /* 0 or max min for every varuiable */
     ,unichr        = 0            /* 0 univariate analysis of character variiables */
     ,outlier       = 0            /* 0 robust regression determination of outliers */
-    ,rsquare       = zip x y msa state  /* 0 robust regression determination of outliers */
     ,printto       = c:\txt\vdo\&data..txt  /* save the voluminous output */
     ,Cleanup       = 0
     );
