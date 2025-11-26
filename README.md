@@ -42,7 +42,7 @@ The macro invocation is at the end of this file
 
     SAMPLE RUN
 
-    %inc "c:/oto/oto_voodoo.sas";
+    %inc "c:/oto/oto_voodoo_20231031.sas"; /*--- or c:/wpsoto/slc_voodoo_20251126.sas ---*/
 
     %utlvdoc
     (
