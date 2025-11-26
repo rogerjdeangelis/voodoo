@@ -5,6 +5,7 @@ Validation and Verification of Database Tables. Profile any SAS dataset. Cardina
 There are two versions of VOODOO
 
   1 SAS version see oto_voodoo_20231031.sas (full output oto_voodoo_zipcode.txt)
+  
   2 Altair SLC version slc_voodoo_20251126.sas (slc_voodoo_zipcode.txt I run with ultaedit))
 
 What this macro does
