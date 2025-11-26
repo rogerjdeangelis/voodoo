@@ -1,5 +1,12 @@
 # voodoo
 
+Validation and Verification of Database Tables.
+
+Too long to post on a listserv, see github
+
+github
+https://github.com/rogerjdeangelis/voodoo
+
 Validation and Verification of Database Tables. Profile any SAS dataset. Cardinality, outliers, top n frequencies, bottom n frequencies, one to many, many to many, associations between numerical and character variables and duplicates on key
 
 There are two versions of VOODOO
