@@ -2,23 +2,14 @@
 
 Validation and Verification of Database Tables. Profile any SAS dataset. Cardinality, outliers, top n frequencies, bottom n frequencies, one to many, many to many, associations between numerical and character variables and duplicates on key
 
-/*
-%let pgm=oto_voodoo;
-* use this to get locations of macros for easy editiong;
-* once program is solid you may want to move macros to autocall library;
-data _null_;
-infile "c:\utl\oto_voodoo.sas" lrecl=300 recfm=v;
-input;
-if index(lowcase(_infile_),'%macro')>0 then do;
- macro=scan(left(_infile_ ),1,'(');
- put @5 _n_ @15 macro $32.;
-end;
-run;quit;
+There are two versions of VOODOO
 
+  1 SAS version see oto_voodoo_20231031.sas (full output oto_voodoo_zipcode.txt)
+  2 Altair SLC version slc_voodoo_20251126.sas (slc_voodoo_zipcode.txt I run with ultaedit))
 
 What this macro does
 
-see the tail of this program for same usage
+see the tail of this program for usage
 You should be able to run this as is.
 
 The macro invocation is at the end of this file
