@@ -13,7 +13,7 @@ run;quit;
 for easy editing here are the locations macros
 prefix area helps
 64        %macro utlnopts
-101       %macro cmpres
+101       %macro cmpresx
 129       %macro _vdo_macnam
 145       %macro utlfkil
 194       %macro nobs
@@ -96,19 +96,19 @@ RUN;quit;
 %MEND UTLNOPTS;
 
 
-%macro cmpres(text);
+%macro cmpresx(text);
 %*********************************************************************;
 %*                                                                   *;
 %*  MACRO: CMPRES                                                    *;
 %*                                                                   *;
-%*  USAGE: 1) %cmpres(argument)                                      *;
+%*  USAGE: 1) %cmpresx(argument)                                      *;
 %*                                                                   *;
 %*  DESCRIPTION:                                                     *;
 %*    This macro returns the argument passed to it in an unquoted    *;
 %*    form with multiple blanks compressed to single blanks and also *;
 %*    with leading and trailing blanks removed.                      *;
 %*                                                                   *;
-%*    Eg. %let macvar=%cmpres(&argtext)                              *;
+%*    Eg. %let macvar=%cmpresx(&argtext)                              *;
 %*                                                                   *;
 %*  NOTES:                                                           *;
 %*    The %LEFT and %TRIM macros in the autocall library are used    *;
@@ -3235,7 +3235,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
     %* so as to replace the blanks with asterisks for use in proc freq;
     %* also guarantee that characters are upper case for comparisons later;
 
-    %LET BY=%UPCASE(%CMPRES(&BY))%STR( );
+    %LET BY=%UPCASE(%CMPRESx(&BY))%STR( );
 
     %PUT BY=&BY***;
 
