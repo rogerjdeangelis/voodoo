@@ -3580,7 +3580,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
   %let out=_vdo_maxmin;
   */
 
-  data _vdo_nummax /view=_vdo_nummax ;
+  data _vdo_nummax /* /view=_vdo_nummax */;
       * Rick Langstoon;
       set %str(&lib).%str(&mem)(drop=_character_);
       retain __typ 'N';
@@ -3603,7 +3603,7 @@ proc sql noprint;select count(*) into :nobs separated by ' ' from &libname..&dat
    run;quit;
 
    * long and skinny for char vars;
-   data _vdo_chrmaxmin/view=_vdo_chrmaxmin;
+   data _vdo_chrmaxmin /*/view=_vdo_chrmaxmin */;
       do until(dne);
          set %str(&lib).%str(&mem)(drop=_numeric_) end=dne;
          array chr[*] _character_;
@@ -4425,7 +4425,7 @@ run;quit;
       ,mem=&data
       );
 
-    data _vcor0th/view=_vcor0th;
+    data _vcor0th  /* /view=_vcor0th  */;
       set %str(&lib).%str(&mem) (keep=_numeric_);
       _rec=_n_;
       if _n_=1 then _rec=.;
