@@ -1,0 +1,18 @@
+
+NOTE: Option OBS changed to 100.
+WARNING: Apparent invocation of macro UTLNOPTS not resolved.
+WARNING: Apparent invocation of macro UTLOPTS not resolved.
+WARNING: Apparent invocation of macro UTLNOPTS not resolved.
+WARNING: Apparent invocation of macro UTLOPTS not resolved.
+NOTE: PROC CONTENTS data=sashelp.class
+
+NOTE: PROC CONTENTS completed: 19 observations, 5 variables
+NOTE: Option TITLE3 changed to Sample observations.
+NOTE: PROC SQL 
+
+NOTE: Macro variable NOBS = 19
+NOTE: PROC SQL statement used.
+NOTE: Option TITLE5 changed to The following is a complete listing of  SASHELP . CLASS .
+NOTE: PROC PRINT data=sashelp.class
+
+NOTE: PROC PRINT completed: 19 observations printed, 5 variables

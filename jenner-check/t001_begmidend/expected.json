@@ -1,0 +1,21 @@
+{
+  "_captured_at": "2026-07-11T06:00:00Z",
+  "_captured_run_id": "r_6b381bef158045c892043f86acb37b56",
+  "status": "ok",
+  "exit_code": 1,
+  "log_contains": [
+    "NOTE: PROC CONTENTS data=sashelp.class",
+    "NOTE: PROC CONTENTS completed: 19 observations, 5 variables",
+    "NOTE: Macro variable NOBS = 19",
+    "NOTE: PROC PRINT data=sashelp.class",
+    "NOTE: PROC PRINT completed: 19 observations printed, 5 variables"
+  ],
+  "log_does_not_contain": [
+    "ERROR:",
+    "[JENNER-ERROR"
+  ],
+  "diagnostics": {
+    "parse_warnings": [],
+    "runtime_warnings": []
+  }
+}

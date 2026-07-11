@@ -1,0 +1,7 @@
+{
+  "bundle": "t002_nobs",
+  "source_file": "oto_voodoo.sas",
+  "source_blob_sha": "8ddd4b5343a91028be97bbf3c10df821d1fb5203",
+  "source_commit": "67cdeeaab4f9fd4b42b7aa00173a811d5441c553",
+  "notes": "Exercises the %nobs sub-macro from the VOODOO table-profiling library unmodified: a PROC SQL COUNT(*) against a two-level libname.dataset reference, called the same way %utlvdoc calls it internally. Run against sashelp.cars."
+}
