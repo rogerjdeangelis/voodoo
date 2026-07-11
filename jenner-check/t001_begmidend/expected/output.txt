@@ -1,0 +1,50 @@
+
+PROC CONTENTS
+-------------------------------------------------------------------------------
+
+Data Set Name: sashelp.class
+Observations:  19
+Variables:     5
+Label:         Student measurement data
+
+Variables (in creation order):
+
+  #  Variable  Type    Len  Format  Label
+---  --------  ----  -----  ------  ----------------
+  1  NAME      Char    200          Student Name
+  2  SEX       Char    200          Gender
+  3  AGE        Num      8          Age in years
+  4  HEIGHT     Num      8          Height in inches
+  5  WEIGHT     Num      8          Weight in pounds
+
+-------------------------------------------------------------------------------
+
+                                                  Sample observations                                                   
+
+                                                  Sample observations                                                   
+                                The following is a complete listing of  SASHELP . CLASS                                 
+
+
+  Obs  Student Name  Gender  Age in years  Height in inches  Weight in pounds
+-----  ------------  ------  ------------  ----------------  ----------------
+    1  Amir          M                 13              61.2                95
+    2  Bethany       F                 14              63.8               105
+    3  Carlos        M                 12              58.5                88
+    4  Diana         F                 11                53              62.5
+    5  Ethan         M                 15                68               130
+    6  Fiona         F                 13              60.5                92
+    7  George        M                 14              65.5               115
+    8  Hannah        F                 12                57                78
+    9  Ivan          M                 11              55.8                72
+   10  Julia         F                 15                64               108
+   11  Kevin         M                 16              70.5               145
+   12  Lily          F                 14                62              97.5
+   13  Marco         M                 12              59.3                85
+   14  Nadia         F                 13              61.8                93
+   15  Oscar         M                 15              67.2               128
+   16  Priya         F                 12              55.5                75
+   17  Quinn         M                 13                63               100
+   18  Rosa          F                 11              52.5                58
+   19  Samuel        M                 14                66               120
+N = 19
+

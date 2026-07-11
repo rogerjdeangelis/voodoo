@@ -1,0 +1,7 @@
+{
+  "bundle": "t001_begmidend",
+  "source_file": "oto_voodoo.sas",
+  "source_blob_sha": "8ddd4b5343a91028be97bbf3c10df821d1fb5203",
+  "source_commit": "67cdeeaab4f9fd4b42b7aa00173a811d5441c553",
+  "notes": "Exercises the %_vdo_begmidend sub-macro from the VOODOO table-profiling library unmodified: PROC CONTENTS on sashelp.class, followed by a full listing (dataset has 19 obs, under the macro's 60-obs threshold for printing everything vs. first/middle/last 20). No caller-side data substitution needed -- sashelp.class is a built-in SAS dataset."
+}
